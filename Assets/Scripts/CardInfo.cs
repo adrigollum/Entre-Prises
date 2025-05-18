@@ -1,8 +1,11 @@
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 
 public class CardInfo : MonoBehaviour
 {
+    public int MaxCardCount = 10; // This number should not be dynamically changed, but set in the inspector.
+
     public string cardName;
     public string cardDescription;
     public EnumCardType.CardType cardType;
