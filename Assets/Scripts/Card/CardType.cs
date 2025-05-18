@@ -22,7 +22,7 @@ public class EnumCardType
             case CardType.Bribe:
                 return "Pot-de-vin";
             default:
-                return "None";
+                return "";
         }
     }
 }
