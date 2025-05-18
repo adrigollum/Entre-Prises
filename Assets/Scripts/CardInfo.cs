@@ -10,11 +10,13 @@ public class CardInfo : MonoBehaviour
     public string cardDescription;
     public EnumCardType.CardType cardType;
     public int cardWattctionCost;
+    public int cardStat;
 
     public TextMeshPro cardNameText;
     public TextMeshPro cardDescriptionText;
     public TextMeshPro cardTypeText;
     public TextMeshPro cardWattctionCostText;
+    public TextMeshPro cardStatText;
 
     private void Start()
     {
@@ -22,5 +24,6 @@ public class CardInfo : MonoBehaviour
         cardDescriptionText.text = cardDescription;
         cardWattctionCostText.text = cardWattctionCost.ToString() + "W";
         cardTypeText.text = EnumCardType.TypeToString(cardType);
+        cardStatText.text = cardStat.ToString(CultureInfo.InvariantCulture) + "%";
     }
 }

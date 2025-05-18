@@ -8,6 +8,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardName
+      value: Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardStat
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: MaxCardCount
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardDescription
+      value: Test Description
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardWattctionCost
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033695198440958304, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: m_Name
-      value: Card
+      value: Ristretto
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
