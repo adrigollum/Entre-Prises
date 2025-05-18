@@ -25,6 +25,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardFirstType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: cardDescription
       value: Test Description
       objectReference: {fileID: 0}
