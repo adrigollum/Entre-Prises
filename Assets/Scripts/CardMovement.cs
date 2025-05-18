@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CardMovement : MonoBehaviour
 {
-    public float speed = 10f; // Speed of the card movement
+    public float speed = 10f;
     public Vector3 targetPosition = Vector3.positiveInfinity;
 
     public bool isSelected = false;
@@ -39,7 +39,7 @@ public class CardMovement : MonoBehaviour
         Vector3 realTargetPosition = new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
         if (isSelected)
         {
-            realTargetPosition.z += selectedOffset;
+            realTargetPosition.y += selectedOffset;
         }
 
         return realTargetPosition;
@@ -51,6 +51,6 @@ public class CardMovement : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, realTargetPosition);
-        Gizmos.DrawSphere(realTargetPosition, 0.1f); // Draw a small sphere at the target position
+        Gizmos.DrawSphere(realTargetPosition, 0.1f);
     }
 }

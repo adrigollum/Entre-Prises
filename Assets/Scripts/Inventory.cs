@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private int deckSize = 10;
+    public int deckSize = 5;
     public List<GameObject> deck = new List<GameObject>();
 
     public float deckWidth = 0.5f;
@@ -11,7 +11,10 @@ public class Inventory : MonoBehaviour
     {
         deck = new List<GameObject>();
     }
-
+    private void Update()
+    {
+        RepositionAllCards();
+    }
     public bool isFull()
     {
         return deck.Count >= deckSize;
