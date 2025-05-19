@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5038965222195874701
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardName
+      value: Ristretto
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardStat
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: MaxCardCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardFirstType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardDescription
+      value: Test Description
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardWattctionCost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 539205888743324345, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_text
+      value: Cafe
+      objectReference: {fileID: 0}
+    - target: {fileID: 539205888743324345, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_fontSize
+      value: 1.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 539205888743324345, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 627801497631168305, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536724243449592944, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.201
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536724243449592944, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2095224385092461279, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.232
+      objectReference: {fileID: 0}
+    - target: {fileID: 2095224385092461279, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.079
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173696404220431309, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 5276283098601537977, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.624
+      objectReference: {fileID: 0}
+    - target: {fileID: 5276283098601537977, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.079
+      objectReference: {fileID: 0}
+    - target: {fileID: 8033695198440958304, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: m_Name
+      value: Ristretto test
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839091487261089321, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c8716aee68f9ad41984ba19a0541051, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
