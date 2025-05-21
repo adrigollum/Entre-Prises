@@ -30,7 +30,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: cardDescription
-      value: Test Description
+      value: "Mais tu dis Que le bonheur est imposable. Et je dis Que ton espoir
+        n'est pas si d\xE9sesp\xE9r\xE9. \xC0 condition d\u2019optimiser Que les
+        dividendes ne soient pas tax\xE9s. Par l'illusoire pr\xE9carit\xE9 De nos
+        actions Defiscaliser Et vice et versa."
       objectReference: {fileID: 0}
     - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: cardWattctionCost
@@ -38,15 +41,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -12.06406
       objectReference: {fileID: 0}
     - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -54.299435
       objectReference: {fileID: 0}
     - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -7.4098473
       objectReference: {fileID: 0}
     - target: {fileID: 1863570696852785396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -80,6 +83,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circuit Court et Vice et Versa
       objectReference: {fileID: 0}
+    - target: {fileID: 8839091487261089321, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 43550a79fcb35ce468215c851e136d2b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
