@@ -30,7 +30,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: cardDescription
-      value: Test Description
+      value: "R\xE9duisez votre facture avec la prime \xE9nergie. Faites vos simulations
+        maintenant ! Renseignez-vous sur votre prime \xE9nergie et touchez les aides
+        de l'\xC9tat !"
       objectReference: {fileID: 0}
     - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: cardWattctionCost

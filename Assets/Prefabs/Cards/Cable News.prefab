@@ -30,7 +30,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: cardDescription
-      value: Test Description
+      value: "Vous voyez cette sensation o\xF9 vous regardez une cha\xEEne de TV,
+        mais \xE7a sent la m*rde ?"
       objectReference: {fileID: 0}
     - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: cardWattctionCost

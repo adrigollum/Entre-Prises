@@ -29,6 +29,12 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardDescription
+      value: "Louis Bodin est un ing\xE9nieur-pr\xE9visionniste-m\xE9t\xE9orologue
+        fran\xE7ais n\xE9 le 29 d\xE9cembre 1957 \xE0 Reims (Marne, France). Mais
+        \xE7a n\u2019as rien a voir."
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: cardWattctionCost
       value: 1
       objectReference: {fileID: 0}

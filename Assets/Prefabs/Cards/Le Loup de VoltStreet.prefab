@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: cardDescription
-      value: Test Description
+      value: "Vendez-moi ce stylo. Salut jeune entrepreune\u2026 Oh ta gueule ! "
       objectReference: {fileID: 0}
     - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: cardWattctionCost

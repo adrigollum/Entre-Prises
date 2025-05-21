@@ -34,7 +34,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: cardDescription
-      value: Test Description
+      value: "Parfois, diriger une entreprise, c\u2019est comme \xEAtre gardien d\u2019immeuble,
+        on s\u2019emmerde alors on parle mal des voisins. \xC7a n'a rien \xE0 voir,
+        mais c\u2019est pareil."
       objectReference: {fileID: 0}
     - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: cardWattctionCost

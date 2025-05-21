@@ -29,6 +29,11 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
+      propertyPath: cardDescription
+      value: "La vie, c'est comme une bo\xEEte de Chocowatt, on sait jamais grand-chose,
+        mais \xE7a pique la langue."
+      objectReference: {fileID: 0}
+    - target: {fileID: 311818306308901396, guid: b434a6e70290a5b4780e23d5b4441bf4, type: 3}
       propertyPath: cardWattctionCost
       value: 1
       objectReference: {fileID: 0}
