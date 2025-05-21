@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class CardInfo : MonoBehaviour
 {
-    public int MaxCardCount = 10; // This number should not be dynamically changed, but set in the inspector.
+    public int MaxCardInDeck = 10; // This number should not be dynamically changed, but set in the inspector.
+
+    private static int _currentCardCount = 0;
+
+    private int id;
+    public int Id
+    {
+        get { return id; }
+    }
 
     public string cardName;
     public string cardDescription;
@@ -28,5 +36,8 @@ public class CardInfo : MonoBehaviour
         cardFirstTypeText.text = EnumCardType.TypeToString(cardFirstType);
         cardSecondTypeText.text = EnumCardType.TypeToString(cardSecondType);
         cardStatText.text = cardStat.ToString(CultureInfo.InvariantCulture) + "%";
+
+        id = _currentCardCount;
+        _currentCardCount++;
     }
 }

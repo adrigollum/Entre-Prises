@@ -9,5 +9,5 @@ public interface IClickable
         RightClick,
         MiddleClick
     }
-    public void onClick(Vector2 position, ClickType button, bool isDown = true);
+    public void onClick(GameObject camera, Vector3 worldPosition, Vector2 position, ClickType button, bool isDown = true);
 }

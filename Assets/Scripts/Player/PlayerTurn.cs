@@ -1,16 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerTurn : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Inventory playerInventory;
+    public PlayerInfo playerInfo;
+    public GameObject card;
+    public Transform summoningPosition;
+    public void DrawCards()
     {
-        
+        while (playerInventory.AddCard(card, summoningPosition)) ;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlaySelectedCard()
     {
-        
     }
 }

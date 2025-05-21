@@ -7,20 +7,12 @@ public class Inventory : MonoBehaviour
     public List<GameObject> deck = new List<GameObject>();
 
     public float deckWidth = 0.5f;
-    private void Start()
-    {
-        deck = new List<GameObject>();
-    }
-    private void Update()
-    {
-        RepositionAllCards();
-    }
     public bool isFull()
     {
         return deck.Count >= deckSize;
     }
 
-    public bool AddCard(GameObject cardPrefab)
+    public bool AddCard(GameObject cardPrefab, Transform summoningPosition)
     {
         if (isFull())
         {
@@ -28,10 +20,27 @@ public class Inventory : MonoBehaviour
             return false;
         }
 
-        deck.Add(cardPrefab);
-        Debug.Log($"Card {cardPrefab.name} added to deck. Current deck size: {deck.Count}");
+        GameObject genCard = Instantiate(cardPrefab, summoningPosition.position, summoningPosition.rotation);
+
+        deck.Add(genCard);
+
         RepositionAllCards();
+
         return true;
+    }
+
+    public void RemoveCard(GameObject card)
+    {
+        if (deck.Contains(card))
+        {
+            deck.Remove(card);
+            Destroy(card);
+            RepositionAllCards();
+        }
+        else
+        {
+            Debug.Log("Card not found in deck.");
+        }
     }
 
     public void RepositionAllCards()

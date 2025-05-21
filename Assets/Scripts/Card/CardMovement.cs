@@ -1,12 +1,14 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CardMovement : MonoBehaviour
 {
     public float speed = 10f;
     public Vector3 targetPosition = Vector3.positiveInfinity;
 
-    public bool isSelected = false;
+    public float percentScreenCardPlayed = 0.7f;
+    public bool isInPlayingArea = false;
+
     public float selectedOffset = 0.5f;
     void Start()
     {
@@ -14,16 +16,23 @@ public class CardMovement : MonoBehaviour
         {
             targetPosition = transform.position;
         }
+
+        isInPlayingArea = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 realTargetPosition = RealTargetPosition();
-        float distance = Vector3.Distance(transform.position, realTargetPosition);
+        if (Mouse.current != null)
+        {
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+
+            isInPlayingArea = mousePosition.y / Screen.height > percentScreenCardPlayed;
+        }
+
+        float distance = Vector3.Distance(transform.position, targetPosition);
         if (distance > 0.001f)
         {
-            Vector3 direction = (realTargetPosition - transform.position).normalized;
+            Vector3 direction = (targetPosition - transform.position).normalized;
             float smoothSpeed = SmoothSpeed(distance);
             transform.position += direction * smoothSpeed * Time.deltaTime;
         }
@@ -34,23 +43,10 @@ public class CardMovement : MonoBehaviour
         return Mathf.Clamp(distance * speed, 0.1f, speed);
     }
 
-    private Vector3 RealTargetPosition()
-    {
-        Vector3 realTargetPosition = new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
-        if (isSelected)
-        {
-            realTargetPosition.y += selectedOffset;
-        }
-
-        return realTargetPosition;
-    }
-
     private void OnDrawGizmos()
     {
-        Vector3 realTargetPosition = RealTargetPosition();
-
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, realTargetPosition);
-        Gizmos.DrawSphere(realTargetPosition, 0.1f);
+        Gizmos.DrawLine(transform.position, targetPosition);
+        Gizmos.DrawSphere(targetPosition, 0.1f);
     }
 }
