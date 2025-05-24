@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class DrawButton : MonoBehaviour, IClickable
 {
-    public GameObject card;
     public Transform summoningPosition;
     public Inventory playerInventory;
 
@@ -14,9 +13,9 @@ public class DrawButton : MonoBehaviour, IClickable
     {
         if (button == IClickable.ClickType.LeftClick && isDown)
         {
-            if (!playerInventory.isFull())
+            if (!playerInventory.IsFull())
             {
-                playerInventory.AddCard(card, summoningPosition);
+                playerInventory.AddRandomCard(summoningPosition);
             }
         }
     }

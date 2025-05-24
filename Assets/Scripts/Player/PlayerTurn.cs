@@ -9,7 +9,7 @@ public class PlayerTurn : MonoBehaviour
     public Transform summoningPosition;
     public void DrawCards()
     {
-        while (playerInventory.AddCard(card, summoningPosition)) ;
+        while (playerInventory.AddRandomCard(summoningPosition)) ;
     }
 
     public void PlaySelectedCard()
