@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -14,7 +12,6 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        // Init Random
         Random.InitState(System.DateTime.Now.Millisecond);
     }
     public void InitInventory()
