@@ -1185,9 +1185,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032e1d1fb176e0b428b060bd43406a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   targetPosition: {x: 0, y: -1, z: 0}
-  isSelected: 0
+  percentScreenCardPlayed: 0.7
+  isInPlayingArea: 0
   selectedOffset: 0.5
 --- !u!114 &9082912141924585233
 MonoBehaviour:
@@ -1213,7 +1214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6335da1cd25e9344e842ab7d9226987d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxCardCount: -1
+  MaxCardInDeck: 10
   cardName: None
   cardDescription: None
   cardFirstType: 0
