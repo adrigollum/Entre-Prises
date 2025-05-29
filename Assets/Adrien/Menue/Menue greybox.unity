@@ -2200,6 +2200,9 @@ MonoBehaviour:
   exposedParamMaster: MasterVolume
   exposedParamMusic: MusicVolume
   exposedParamSFX: SFXVolume
+  defaultMaster: 1
+  defaultMusic: 1
+  defaultSFX: 1
 --- !u!1 &688305459
 GameObject:
   m_ObjectHideFlags: 0
