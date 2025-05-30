@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class CamInteract : MonoBehaviour
 {
     private Camera mainCamera;
-    private PlayerTurn playerTurn;
+    private GameTurn gameTurn;
     public GameObject cardSelected;
 
     public float minCardDistance = 1.5f;
@@ -16,7 +16,7 @@ public class CamInteract : MonoBehaviour
         mainCamera = GetComponent<Camera>();
 
         GameObject gameManager = GameObject.Find("GameManager");
-        playerTurn = gameManager.GetComponent<PlayerTurn>();
+        gameTurn = gameManager.GetComponent<GameTurn>();
     }
 
     void Update()
@@ -38,11 +38,14 @@ public class CamInteract : MonoBehaviour
                     }
                     else
                     {
-                        if (cardSelected.GetComponent<CardMovement>().isInPlayingArea)
+                        if (cardSelected.GetComponent<CardMovement>().IsInPlayingArea())
                         {
-                            playerTurn.PlayCard(cardSelected);
+                            gameTurn.PlayCard(cardSelected);
                         }
-                        playerTurn.playerInventory.RepositionAllCards();
+                        else
+                        {
+                            gameTurn.RepositionAllCards();
+                        }
                         cardSelected = null;
                     }
                 }

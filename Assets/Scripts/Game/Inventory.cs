@@ -9,13 +9,10 @@ public class Inventory : MonoBehaviour
     public List<GameObject> allCardDeck = new List<GameObject>();
 
     public float deckWidth = 1.6f;
-
-    private void Start()
+    public void Init()
     {
         Random.InitState(System.DateTime.Now.Millisecond);
-    }
-    public void InitInventory()
-    {
+
         allCardDeck = new List<GameObject>();
 
         Debug.Log("Initializing Inventory...");
@@ -65,7 +62,7 @@ public class Inventory : MonoBehaviour
             Debug.LogError("No cards available in the deck to select from.");
             return null;
         }
-        
+
         int allDeckSize = GetAllDeckSize();
         int randomIndex = Random.Range(0, allDeckSize);
         Debug.Log("Random index selected: " + randomIndex + " from total size: " + allDeckSize);
@@ -92,11 +89,6 @@ public class Inventory : MonoBehaviour
 
     public bool AddRandomCard(Transform summoningPosition)
     {
-        if (allCardDeck.Count == 0)
-        {
-            InitInventory();
-        }
-
         if (IsFull())
         {
             Debug.Log("Deck is full. Cannot add more cards.");
@@ -110,7 +102,7 @@ public class Inventory : MonoBehaviour
         }
 
         randomCard.GetComponent<CardInfo>().MaxCardInDeck--;
-        
+
         return AddCardFromPrefab(randomCard, summoningPosition); ;
     }
 

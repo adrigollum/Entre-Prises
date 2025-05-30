@@ -9,11 +9,11 @@ public class PlayerInfo : MonoBehaviour
     public Inventory inventory;
     public TextMeshProUGUI wattctionText;
 
-    private void Start()
+    public void Init()
     {
         CurrentWattction = MaxWattction;
 
-        UpdateTexts();
+        UpdateUI();
     }
 
     public void AddWattction(int amount)
@@ -28,10 +28,10 @@ public class PlayerInfo : MonoBehaviour
             CurrentWattction = 0;
         }
 
-        UpdateTexts();
+        UpdateUI();
     }
 
-    private void UpdateTexts()
+    private void UpdateUI()
     {
         wattctionText.text = CurrentWattction.ToString() + "/" + MaxWattction.ToString();
     }
