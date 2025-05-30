@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Adrien/Menue/Menue greybox.unity
     guid: 3763dd944b3e5f543a39fe8e2b0f4050
   - enabled: 1
-    path: Assets/Adrien/Credit/Credit.unity
+    path: Assets/Scenes/Credit.unity
     guid: 2eecb2dd371bb104cbd47884bea53a1c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
