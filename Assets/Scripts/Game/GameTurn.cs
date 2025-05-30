@@ -25,19 +25,22 @@ public class GameTurn : MonoBehaviour
         UpdateUI();
     }
 
-    public void PlayCard(GameObject card)
+    public bool PlayCard(GameObject card)
     {
         if (card == null)
         {
             Debug.LogError("Card is null. Cannot play card.");
-            return;
+            return false;
         }
 
-        if (playerTurn.PlayCard(card))
+        bool cardPlayed = playerTurn.PlayCard(card);
+        if (cardPlayed)
         {
             int damage = enemyTurn.GetDamage(card.GetComponent<CardInfo>());
             gameInfo.AddStat(damage);
         }
+
+        return cardPlayed;
     }
     public void RepositionAllCards()
     {

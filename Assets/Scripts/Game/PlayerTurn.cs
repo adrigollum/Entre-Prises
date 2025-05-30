@@ -22,7 +22,7 @@ public class PlayerTurn : MonoBehaviour
         CardInfo cardInfo = card.GetComponent<CardInfo>();
         if (cardInfo != null)
         {
-            if (playerInfo.CurrentWattction >= cardInfo.cardWattctionCost)
+            if (playerInfo.currentWattction >= cardInfo.cardWattctionCost)
             {
                 playerInfo.AddWattction(-cardInfo.cardWattctionCost);
 

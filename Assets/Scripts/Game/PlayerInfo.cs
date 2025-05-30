@@ -3,29 +3,36 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-    public int MaxWattction = 2;
-    public int CurrentWattction = 0;
-
+    public int level = 1;
+    public int exp = 0;
+    public int nbEntreprise = 1;
+    public int maxWattction = 2;
+    public int currentWattction = 0;
     public Inventory inventory;
     public TextMeshProUGUI wattctionText;
 
     public void Init()
     {
-        CurrentWattction = MaxWattction;
+        level = PlayerPrefs.GetInt("PlayerLevel", 1);
+        exp = PlayerPrefs.GetInt("PlayerExp", 0);
+        nbEntreprise = PlayerPrefs.GetInt("PlayerNbEntreprise", 1);
 
+        maxWattction = nbEntreprise * 2;
+        currentWattction = 1;
+
+        inventory.deckSize = 3 + (level - 1) / 2;
         UpdateUI();
     }
-
     public void AddWattction(int amount)
     {
-        CurrentWattction += amount;
-        if (CurrentWattction > MaxWattction)
+        currentWattction += amount;
+        if (currentWattction > maxWattction)
         {
-            CurrentWattction = MaxWattction;
+            currentWattction = maxWattction;
         }
-        else if (CurrentWattction < 0)
+        else if (currentWattction < 0)
         {
-            CurrentWattction = 0;
+            currentWattction = 0;
         }
 
         UpdateUI();
@@ -33,6 +40,14 @@ public class PlayerInfo : MonoBehaviour
 
     private void UpdateUI()
     {
-        wattctionText.text = CurrentWattction.ToString() + "/" + MaxWattction.ToString();
+        wattctionText.text = currentWattction.ToString() + "/" + maxWattction.ToString();
+    }
+
+    public void Save()
+    {
+        PlayerPrefs.SetInt("PlayerLevel", level);
+        PlayerPrefs.SetInt("PlayerExp", exp);
+        PlayerPrefs.SetInt("PlayerNbEntreprise", nbEntreprise);
+        PlayerPrefs.Save();
     }
 }

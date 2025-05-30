@@ -16,6 +16,6 @@ public class EnemyTurn : MonoBehaviour
             return 0;
         }
 
-        return enemyInfo.GetDamage(cardInfo);
+        return enemyInfo.GetDamageFromCard(cardInfo);
     }
 }

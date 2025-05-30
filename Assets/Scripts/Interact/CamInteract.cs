@@ -36,16 +36,13 @@ public class CamInteract : MonoBehaviour
                     {
                         cardSelected = hit.collider.gameObject;
                     }
-                    else
+                    else if (cardSelected == hit.collider.gameObject)
                     {
                         if (cardSelected.GetComponent<CardMovement>().IsInPlayingArea())
                         {
                             gameTurn.PlayCard(cardSelected);
                         }
-                        else
-                        {
-                            gameTurn.RepositionAllCards();
-                        }
+                        gameTurn.RepositionAllCards();
                         cardSelected = null;
                     }
                 }
