@@ -8,7 +8,7 @@ public class EnemyTurn : MonoBehaviour
     {
         enemyInfo.Init();
     }
-    public int GetDamage(CardInfo cardInfo)
+    public int GetDamageFromCard(CardInfo cardInfo)
     {
         if (cardInfo == null)
         {
@@ -17,5 +17,10 @@ public class EnemyTurn : MonoBehaviour
         }
 
         return enemyInfo.GetDamageFromCard(cardInfo);
+    }
+
+    public int GetAttackDamage()
+    {
+        return enemyInfo.GetAttackDamage();
     }
 }

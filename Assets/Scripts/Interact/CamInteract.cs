@@ -19,6 +19,31 @@ public class CamInteract : MonoBehaviour
         gameTurn = gameManager.GetComponent<GameTurn>();
     }
 
+    private void HandleCardClick(CardClick hit)
+    {
+        GameObject card = hit.gameObject;
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            if (cardSelected == null)
+            {
+                cardSelected = card;
+            }
+            else if (cardSelected == card)
+            {
+                CardMovement.CardArea cardArea = cardSelected.GetComponent<CardMovement>().IsInPlayingArea();
+                if (cardArea == CardMovement.CardArea.PlayingArea)
+                {
+                    gameTurn.PlayCard(cardSelected);
+                }
+                else if (cardArea == CardMovement.CardArea.DiscardArea)
+                {
+                    gameTurn.DiscardCard(cardSelected);
+                }
+                gameTurn.RepositionAllCards();
+                cardSelected = null;
+            }
+        }
+    }
     void Update()
     {
         if (Mouse.current != null)
@@ -30,20 +55,19 @@ public class CamInteract : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 CardClick cardClick = hit.collider.GetComponent<CardClick>();
-                if (cardClick != null && Mouse.current.leftButton.wasPressedThisFrame)
+                if (cardClick != null)
                 {
-                    if (cardSelected == null)
+                    HandleCardClick(cardClick);
+                }
+                else if (cardSelected == null)
+                {
+                    IClickable clickable = hit.collider.GetComponent<IClickable>();
+                    if (clickable != null)
                     {
-                        cardSelected = hit.collider.gameObject;
-                    }
-                    else if (cardSelected == hit.collider.gameObject)
-                    {
-                        if (cardSelected.GetComponent<CardMovement>().IsInPlayingArea())
+                        if (Mouse.current.leftButton.wasPressedThisFrame)
                         {
-                            gameTurn.PlayCard(cardSelected);
+                            clickable.onClick(gameObject, hit.point, mousePosition, IClickable.ClickType.LeftClick, Mouse.current.leftButton.isPressed);
                         }
-                        gameTurn.RepositionAllCards();
-                        cardSelected = null;
                     }
                 }
             }

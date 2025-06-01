@@ -14,7 +14,7 @@ public class EnumCardType
         switch (type)
         {
             case CardType.Cafe:
-                return "Café";
+                return "Cafï¿½";
             case CardType.Gift:
                 return "Cadeau";
             case CardType.ChitChat:

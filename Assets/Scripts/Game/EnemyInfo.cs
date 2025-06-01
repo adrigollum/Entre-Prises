@@ -1,15 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEditor.SearchService;
-using UnityEngine.SceneManagement;
+using System.Data.Common;
 
 public class EnemyInfo : MonoBehaviour
 {
     public int level = 1;
     public string enemyName;
     public int turnToAttack = 2;
-
 
     public List<EnumCardType.CardType> weaknesses = new List<EnumCardType.CardType>();
     public List<EnumCardType.CardType> resistances = new List<EnumCardType.CardType>();
@@ -25,24 +23,21 @@ public class EnemyInfo : MonoBehaviour
 
         if (level == 1)
         {
-            weaknesses = GetRandomTypeList(1);
-            resistances = GetRandomTypeList(1);
+            GetRandomTypeList(2, 2);
         }
         else if (level == 2)
         {
-            weaknesses = GetRandomTypeList(2);
-            resistances = GetRandomTypeList(2);
+            GetRandomTypeList(2, 2);
         }
         else
         {
-            weaknesses = GetRandomTypeList(1);
-            resistances = GetRandomTypeList(2);
+            GetRandomTypeList(1, 2);
         }
 
         UpdateUI();
     }
 
-    private List<EnumCardType.CardType> GetRandomTypeList(int size)
+    private void GetRandomTypeList(int weaknessesSize, int resistancesSize)
     {
         List<EnumCardType.CardType> allTypes = new List<EnumCardType.CardType>();
 
@@ -54,13 +49,27 @@ public class EnemyInfo : MonoBehaviour
             }
             allTypes.Add(type);
         }
-        while (allTypes.Count > size)
+
+        if (allTypes.Count < weaknessesSize + resistancesSize)
         {
-            int index = Random.Range(0, allTypes.Count);
-            allTypes.RemoveAt(index);
+            Debug.LogError("Not enough types to assign weaknesses and resistances.");
+            return;
         }
 
-        return allTypes;
+        weaknesses.Clear();
+        resistances.Clear();
+        for (int i = 0; i < weaknessesSize; i++)
+        {
+            int randomIndex = Random.Range(0, allTypes.Count);
+            weaknesses.Add(allTypes[randomIndex]);
+            allTypes.RemoveAt(randomIndex);
+        }
+        for (int i = 0; i < resistancesSize; i++)
+        {
+            int randomIndex = Random.Range(0, allTypes.Count);
+            resistances.Add(allTypes[randomIndex]);
+            allTypes.RemoveAt(randomIndex);
+        }
     }
 
     private int CalcDamage(int damage, EnumCardType.CardType cardType)
@@ -93,7 +102,27 @@ public class EnemyInfo : MonoBehaviour
 
     public int GetAttackDamage()
     {
-        return 0;
+        int normalDamage = 10;
+        int strongDamage = 35;
+
+        if (level == 2)
+        {
+            normalDamage = 20;
+            strongDamage = 45;
+        }
+        else if (level > 2)
+        {
+            normalDamage = 35;
+            strongDamage = 60;
+        }
+
+        int randomValue = Random.Range(0, 100);
+        if (randomValue < 20)
+        {
+            return strongDamage;
+        }
+
+        return normalDamage;
     }
 
     private void UpdateUI()

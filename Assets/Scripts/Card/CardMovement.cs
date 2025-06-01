@@ -6,7 +6,8 @@ public class CardMovement : MonoBehaviour
     public float speed = 10f;
     public Vector3 targetPosition = Vector3.positiveInfinity;
 
-    public float percentScreenCardPlayed = 0.7f;
+    public float percentScreenUpY = 0.7f;
+    public float percentScreenCardPlayedX = 0.5f;
     public float selectedOffset = 0.5f;
     void Start()
     {
@@ -41,28 +42,44 @@ public class CardMovement : MonoBehaviour
         Gizmos.DrawSphere(targetPosition, 0.1f);
     }
 
-    public bool IsInPlayingArea()
+    public enum CardArea
+    {
+        None,
+        PlayingArea,
+        DiscardArea
+    }
+    public CardArea IsInPlayingArea()
     {
         if (Mouse.current == null)
         {
-            return false;
+            return CardArea.None;
         }
 
         Vector3 cardScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
-        bool isInPlayingArea = cardScreenPosition.y > Screen.height * percentScreenCardPlayed;
 
-        if (isInPlayingArea)
+        bool isInUpArea = cardScreenPosition.y > Screen.height * percentScreenUpY;
+        bool isInPlayingArea = cardScreenPosition.x < Screen.width * percentScreenCardPlayedX;
+
+        if (isInUpArea && isInPlayingArea)
         {
             PlayingAreaShader();
+            return CardArea.PlayingArea;
         }
-        else
+        else if (isInUpArea && !isInPlayingArea)
         {
-            ResetShader();
+            DiscardAreaShader();
+            return CardArea.DiscardArea;
         }
-        return isInPlayingArea;
+
+        ResetShader();
+        return CardArea.None;
     }
 
     public void PlayingAreaShader()
+    {
+    }
+
+    public void DiscardAreaShader()
     {
     }
 

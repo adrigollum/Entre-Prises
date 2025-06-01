@@ -790,8 +790,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2811bbf20a792f444abfeb6a6258d207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxWattction: 100
-  CurrentWattction: 0
+  level: 1
+  exp: 0
+  nbEntreprise: 1
+  maxWattction: 2
+  currentWattction: 0
   inventory: {fileID: 1408992853}
   wattctionText: {fileID: 1329038759}
 --- !u!1 &408257741
@@ -1589,7 +1592,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/X
+  m_text: 'Tours avant attaque : 2'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 40ba45b06f0bab54b97e2c0b96e557ff, type: 2}
   m_sharedMaterial: {fileID: -417203093061476004, guid: 40ba45b06f0bab54b97e2c0b96e557ff, type: 2}
@@ -1654,7 +1657,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -77.86844, y: 0, z: 0, w: -33.43347}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3568,6 +3571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30a94251d176624ea19dadddebdc238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 1
   enemyName: Jeff Bizous
   turnToAttack: 2
   weaknesses: 

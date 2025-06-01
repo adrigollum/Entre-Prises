@@ -19,27 +19,12 @@ public class PlayerTurn : MonoBehaviour
 
     public bool PlayCard(GameObject card)
     {
-        CardInfo cardInfo = card.GetComponent<CardInfo>();
-        if (cardInfo != null)
-        {
-            if (playerInfo.currentWattction >= cardInfo.cardWattctionCost)
-            {
-                playerInfo.AddWattction(-cardInfo.cardWattctionCost);
+        return playerInfo.PlayCard(card);
+    }
 
-                playerInfo.inventory.RemoveCard(card);
-                return true;
-            }
-            else
-            {
-                Debug.Log("Not enough Wattction to play this card.");
-                return false;
-            }
-        }
-        else
-        {
-            Debug.LogError("CardInfo component not found on the card.");
-            return false;
-        }
+    public void DiscardCard(GameObject card)
+    {
+        playerInfo.DiscardCard(card);
     }
 
     public void RepositionAllCards()

@@ -137,6 +137,30 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public bool PutCardInPool(GameObject card)
+    {
+        CardInfo cardToPut = card.GetComponent<CardInfo>();
+        if (cardToPut == null)
+        {
+            Debug.LogError("Card does not have CardInfo component.");
+            return false;
+        }
+
+        for (int i = allCardDeck.Count - 1; i >= 0; i--)
+        {
+            CardInfo cardInfo = allCardDeck[i].GetComponent<CardInfo>();
+            if (cardInfo != null && cardInfo.cardName == cardToPut.cardName)
+            {
+                cardInfo.MaxCardInDeck++;
+                RemoveCard(card);
+                return true;
+            }
+        }
+
+        Debug.LogError("Card not found in allCardDeck.");
+        return false;
+    }
+
     public void RepositionAllCards()
     {
         float xOffset = ((deckWidth * 2) / (deck.Count + 1));

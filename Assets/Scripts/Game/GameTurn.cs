@@ -9,6 +9,7 @@ public class GameTurn : MonoBehaviour
     public TextMeshProUGUI turnsText;
 
     public int turnCount = 0;
+    public bool hadCardPlayed = false;
 
     public void Start()
     {
@@ -36,10 +37,11 @@ public class GameTurn : MonoBehaviour
         bool cardPlayed = playerTurn.PlayCard(card);
         if (cardPlayed)
         {
-            int damage = enemyTurn.GetDamage(card.GetComponent<CardInfo>());
+            int damage = enemyTurn.GetDamageFromCard(card.GetComponent<CardInfo>());
             gameInfo.AddStat(damage);
         }
 
+        hadCardPlayed = cardPlayed || hadCardPlayed; // Track if any card was played this turn
         return cardPlayed;
     }
     public void RepositionAllCards()
@@ -47,8 +49,44 @@ public class GameTurn : MonoBehaviour
         playerTurn.RepositionAllCards();
     }
 
+    public void DiscardCard(GameObject card)
+    {
+        if (card == null)
+        {
+            Debug.LogError("Card is null. Cannot discard card.");
+            return;
+        }
+
+        playerTurn.DiscardCard(card);
+        EndTurn();
+    }
+
+    public void EndTurn()
+    {
+        turnCount++;
+
+        if (turnCount % enemyTurn.enemyInfo.turnToAttack == 0)
+        {
+            int damage = enemyTurn.GetAttackDamage();
+            gameInfo.AddStat(-damage);
+        }
+
+        playerTurn.DrawCards();
+
+        int wattctionGain = playerTurn.playerInfo.level;
+        if (!hadCardPlayed)
+        {
+            wattctionGain *= 2;
+        }
+
+        playerTurn.playerInfo.AddWattction(wattctionGain);
+
+        hadCardPlayed = false;
+        UpdateUI();
+    }
+
     public void UpdateUI()
     {
-        turnsText.text = $"{turnCount % enemyTurn.enemyInfo.turnToAttack}/{enemyTurn.enemyInfo.turnToAttack}";
+        turnsText.text = "Tours avant attaque : " + (enemyTurn.enemyInfo.turnToAttack - (turnCount % enemyTurn.enemyInfo.turnToAttack)).ToString();
     }
 }
