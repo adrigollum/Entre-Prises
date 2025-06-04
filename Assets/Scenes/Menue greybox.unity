@@ -2824,6 +2824,7 @@ GameObject:
   - component: {fileID: 568190936}
   - component: {fileID: 568190935}
   - component: {fileID: 568190934}
+  - component: {fileID: 568190938}
   m_Layer: 5
   m_Name: Retour
   m_TagString: Untagged
@@ -2948,6 +2949,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568190932}
   m_CullTransparentMesh: 1
+--- !u!114 &568190938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568190932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e8b147b35212e4eb79d3e10b384481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonText: {fileID: 1298803603}
+  normalColor: {r: 0, g: 0, b: 0, a: 1}
+  hoverColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
 --- !u!1 &578841770
 GameObject:
   m_ObjectHideFlags: 0
@@ -4111,6 +4127,7 @@ GameObject:
   - component: {fileID: 729252814}
   - component: {fileID: 729252813}
   - component: {fileID: 729252817}
+  - component: {fileID: 729252818}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -4235,6 +4252,21 @@ MonoBehaviour:
   bouton: {fileID: 729252813}
   cameraController: {fileID: 519468501}
   waypointIndex: 2
+--- !u!114 &729252818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729252812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e8b147b35212e4eb79d3e10b384481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonText: {fileID: 2025091056}
+  normalColor: {r: 0.17254902, g: 0.43529412, b: 0.16078432, a: 1}
+  hoverColor: {r: 0.4933263, g: 0.735849, b: 0.48246706, a: 1}
 --- !u!1 &735309426
 GameObject:
   m_ObjectHideFlags: 0
@@ -4248,6 +4280,7 @@ GameObject:
   - component: {fileID: 735309429}
   - component: {fileID: 735309428}
   - component: {fileID: 735309431}
+  - component: {fileID: 735309432}
   m_Layer: 5
   m_Name: Credit
   m_TagString: Untagged
@@ -4372,6 +4405,21 @@ MonoBehaviour:
   bouton: {fileID: 735309428}
   cameraController: {fileID: 519468501}
   waypointIndex: 3
+--- !u!114 &735309432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735309426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e8b147b35212e4eb79d3e10b384481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonText: {fileID: 106352809}
+  normalColor: {r: 0.17254902, g: 0.43529412, b: 0.16078432, a: 1}
+  hoverColor: {r: 0.4933263, g: 0.735849, b: 0.48246706, a: 1}
 --- !u!1001 &737523227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7305,6 +7353,7 @@ GameObject:
   - component: {fileID: 1213685166}
   - component: {fileID: 1213685165}
   - component: {fileID: 1213685168}
+  - component: {fileID: 1213685169}
   m_Layer: 5
   m_Name: Option
   m_TagString: Untagged
@@ -7429,6 +7478,21 @@ MonoBehaviour:
   bouton: {fileID: 1213685165}
   cameraController: {fileID: 519468501}
   waypointIndex: 1
+--- !u!114 &1213685169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213685163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e8b147b35212e4eb79d3e10b384481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonText: {fileID: 316116017}
+  normalColor: {r: 0.17254902, g: 0.43529412, b: 0.16078432, a: 1}
+  hoverColor: {r: 0.4933263, g: 0.735849, b: 0.48246706, a: 1}
 --- !u!1001 &1247501132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8323,6 +8387,7 @@ GameObject:
   - component: {fileID: 1339838108}
   - component: {fileID: 1339838107}
   - component: {fileID: 1339838110}
+  - component: {fileID: 1339838111}
   m_Layer: 5
   m_Name: Aide
   m_TagString: Untagged
@@ -8447,6 +8512,21 @@ MonoBehaviour:
   bouton: {fileID: 0}
   cameraController: {fileID: 0}
   waypointIndex: 0
+--- !u!114 &1339838111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339838105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e8b147b35212e4eb79d3e10b384481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonText: {fileID: 1328733617}
+  normalColor: {r: 0.17254902, g: 0.43529412, b: 0.16078432, a: 1}
+  hoverColor: {r: 0.4933263, g: 0.735849, b: 0.48246706, a: 1}
 --- !u!1001 &1356866454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9763,6 +9843,7 @@ GameObject:
   - component: {fileID: 1599119690}
   - component: {fileID: 1599119689}
   - component: {fileID: 1599119692}
+  - component: {fileID: 1599119693}
   m_Layer: 5
   m_Name: Quitter
   m_TagString: Untagged
@@ -9886,6 +9967,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bouton: {fileID: 1599119689}
   waypointIndex: 0
+--- !u!114 &1599119693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599119687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e8b147b35212e4eb79d3e10b384481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonText: {fileID: 1210983023}
+  normalColor: {r: 0.17254902, g: 0.43529412, b: 0.16078432, a: 1}
+  hoverColor: {r: 0.4933263, g: 0.735849, b: 0.48246706, a: 1}
 --- !u!4 &1609866299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1292937826714418382, guid: 1fd023653c2034e42bf6dd29b6dc6fd5, type: 3}
