@@ -11,7 +11,7 @@ public class CardMovement : MonoBehaviour
     public float selectedOffset = 0.5f;
     void Start()
     {
-        if (targetPosition == Vector3.positiveInfinity)
+        if (Vector3.positiveInfinity.Equals(targetPosition))
         {
             targetPosition = transform.position;
         }
@@ -37,6 +37,10 @@ public class CardMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (Vector3.positiveInfinity.Equals(targetPosition))
+        {
+            return;
+        }
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, targetPosition);
         Gizmos.DrawSphere(targetPosition, 0.1f);

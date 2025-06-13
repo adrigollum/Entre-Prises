@@ -163,7 +163,7 @@ public class Inventory : MonoBehaviour
 
     public void RepositionAllCards()
     {
-        float xOffset = ((deckWidth * 2) / (deck.Count + 1));
+        float xOffset = deckWidth * 2 / (deck.Count + 1);
         for (int i = 0; i < deck.Count; i++)
         {
             deck[i].GetComponent<CardMovement>().targetPosition = new Vector3(
@@ -171,5 +171,10 @@ public class Inventory : MonoBehaviour
                 transform.position.y,
                 transform.position.z);
         }
+    }
+
+    void Update()
+    {
+        RepositionAllCards();
     }
 }

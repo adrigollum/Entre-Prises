@@ -1,20 +1,19 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerTurn : MonoBehaviour
 {
-    public Inventory playerInventory;
     public PlayerInfo playerInfo;
     public Transform summoningPosition;
     public void Init()
     {
-        playerInventory.Init();
+        playerInfo = GetComponent<PlayerInfo>();
         playerInfo.Init();
+        playerInfo.inventory.Init();
         DrawCards();
     }
     public void DrawCards()
     {
-        while (playerInventory.AddRandomCard(summoningPosition)) ;
+        while (playerInfo.inventory.AddRandomCard(summoningPosition)) ;
     }
 
     public bool PlayCard(GameObject card)
@@ -29,6 +28,11 @@ public class PlayerTurn : MonoBehaviour
 
     public void RepositionAllCards()
     {
-        playerInventory.RepositionAllCards();
+        playerInfo.inventory.RepositionAllCards();
+    }
+
+    public void Save()
+    {
+        playerInfo.Save();
     }
 }

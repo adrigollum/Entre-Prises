@@ -54,6 +54,12 @@ public class CamInteract : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
+                if (hit.collider == null)
+                {
+                    return; // No collider hit
+                }
+                Debug.DrawLine(ray.origin, hit.point, Color.red);
+
                 CardClick cardClick = hit.collider.GetComponent<CardClick>();
                 if (cardClick != null)
                 {

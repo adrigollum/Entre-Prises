@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class Cambouge : MonoBehaviour
+public class MenuCamMovement : MonoBehaviour
 {
     [Header("Waypoints")]
     public Transform[] points;
@@ -23,65 +23,71 @@ public class Cambouge : MonoBehaviour
     private bool sceneLoaded = false;
     private int lastReachedIndex = 0; // Mémorise le dernier index atteint dans points[]
 
-    void Update()
-{
-    if (isMoving && currentPath.Length > 0 && pathIndex < currentPath.Length)
+    void Start()
     {
-        Transform target = currentPath[pathIndex];
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
-        // --- Rotation spéciale si destination finale = point 4 ---
-        Quaternion targetRotation;
-
-        bool goingToPoint4 = (currentPath.Length >= 2 && currentPath[currentPath.Length - 1] == points[3]);
-
-        if (goingToPoint4 && pathIndex < currentPath.Length - 1)
+        pathIndex = StaticSceneInfo.mainMenuCamIndex;
+        if (pathIndex != 0)
         {
-            // Toujours regarder vers le point 4 (ignorer rotation du point secondaire)
-            Vector3 lookDir = points[3].position - transform.position;
-            if (lookDir.sqrMagnitude > 0.001f)
-                targetRotation = Quaternion.LookRotation(lookDir);
-            else
-                targetRotation = transform.rotation; // pas de saut brusque
+            GoToPoint(pathIndex);
         }
-        else
+    }
+
+    void Update()
+    {
+        if (isMoving && currentPath.Length > 0 && pathIndex < currentPath.Length)
         {
-            // Rotation normale vers le point courant
-            targetRotation = target.rotation;
-        }
+            Transform target = currentPath[pathIndex];
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, cameraRotationSpeed * Time.deltaTime);
+            // --- Rotation spéciale si destination finale = point 4 ---
+            Quaternion targetRotation;
 
-        bool posReached = Vector3.Distance(transform.position, target.position) < 0.05f;
-        bool rotReached = Quaternion.Angle(transform.rotation, targetRotation) < 1f;
+            bool goingToPoint4 = (currentPath.Length >= 2 && currentPath[currentPath.Length - 1] == points[3]);
 
-        if (posReached && rotReached)
-        {
-            int pointIndex = System.Array.IndexOf(points, target);
-            if (pointIndex != -1)
+            if (goingToPoint4 && pathIndex < currentPath.Length - 1)
             {
-                lastReachedIndex = pointIndex;
+                // Toujours regarder vers le point 4 (ignorer rotation du point secondaire)
+                Vector3 lookDir = points[3].position - transform.position;
+                if (lookDir.sqrMagnitude > 0.001f)
+                    targetRotation = Quaternion.LookRotation(lookDir);
+                else
+                    targetRotation = transform.rotation; // pas de saut brusque
+            }
+            else
+            {
+                // Rotation normale vers le point courant
+                targetRotation = target.rotation;
             }
 
-            pathIndex++;
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, cameraRotationSpeed * Time.deltaTime);
 
-            if (pathIndex >= currentPath.Length)
+            bool posReached = Vector3.Distance(transform.position, target.position) < 0.05f;
+            bool rotReached = Quaternion.Angle(transform.rotation, targetRotation) < 1f;
+
+            if (posReached && rotReached)
             {
-                isMoving = false;
-
-                if (currentPath[currentPath.Length - 1] == points[3] && !sceneLoaded)
+                int pointIndex = System.Array.IndexOf(points, target);
+                if (pointIndex != -1)
                 {
-                    sceneLoaded = true;
-                    Debug.Log("Arrivé au point 3, chargement de la scène suivante...");
-                    SceneManager.LoadScene("Credit");
+                    lastReachedIndex = pointIndex;
+                }
+
+                pathIndex++;
+
+                if (pathIndex >= currentPath.Length)
+                {
+                    isMoving = false;
+
+                    if (currentPath[currentPath.Length - 1] == points[3] && !sceneLoaded)
+                    {
+                        sceneLoaded = true;
+                        Debug.Log("Arrivé au point 3, chargement de la scène suivante...");
+                        SceneManager.LoadScene("Credit");
+                    }
                 }
             }
         }
     }
-}
-
-
-
 
     public void GoToPoint(int index)
     {

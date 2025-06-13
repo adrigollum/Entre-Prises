@@ -13,9 +13,9 @@ public class PlayerInfo : MonoBehaviour
 
     public void Init()
     {
-        level = PlayerPrefs.GetInt("PlayerLevel", 1);
+        level = ExpToLevel(exp);
         exp = PlayerPrefs.GetInt("PlayerExp", 0);
-        nbEntreprise = PlayerPrefs.GetInt("PlayerNbEntreprise", 1);
+        nbEntreprise = StaticEntreprisesSaveManager.TMPREPLACE;
 
         maxWattction = nbEntreprise * 2;
         currentWattction = 1;
@@ -78,11 +78,38 @@ public class PlayerInfo : MonoBehaviour
         wattctionText.text = currentWattction.ToString() + "/" + maxWattction.ToString();
     }
 
+    private int ExpToLevel(int exp)
+    {
+        int level2Exp = 50;
+        int level3Exp = 100;
+        int level4Exp = 350;
+        int level5Exp = 600;
+
+        if (exp < level2Exp)
+        {
+            return 1;
+        }
+        else if (exp < level2Exp + level3Exp)
+        {
+            return 2;
+        }
+        else if (exp < level2Exp + level3Exp + level4Exp)
+        {
+            return 3;
+        }
+        else if (exp < level2Exp + level3Exp + level4Exp + level5Exp)
+        {
+            return 4;
+        }
+        else
+        {
+            return 5;
+        }
+    }
+
     public void Save()
     {
-        PlayerPrefs.SetInt("PlayerLevel", level);
         PlayerPrefs.SetInt("PlayerExp", exp);
-        PlayerPrefs.SetInt("PlayerNbEntreprise", nbEntreprise);
         PlayerPrefs.Save();
     }
 }

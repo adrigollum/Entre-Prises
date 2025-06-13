@@ -11,7 +11,21 @@ public class GameInfo : MonoBehaviour
     public TextMeshProUGUI enemyStatsText;
     public void Init()
     {
+        EnemyInfo enemyInfo = GetComponent<EnemyInfo>();
+
         health = maxHealth / 2;
+        if (enemyInfo.level == 1)
+        {
+            health = 60;
+        }
+        else if (enemyInfo.level == 2)
+        {
+            health = 40;
+        }
+        else if (enemyInfo.level == 3)
+        {
+            health = 30;
+        }
         UpdateUI();
     }
 
@@ -21,6 +35,21 @@ public class GameInfo : MonoBehaviour
         health = Mathf.Clamp(health, 0, maxHealth);
 
         UpdateUI();
+    }
+
+    public EnumGameStatus GetGameStatus()
+    {
+        if (health <= 0)
+        {
+            return EnumGameStatus.Lost;
+        }
+
+        if (health >= maxHealth)
+        {
+            return EnumGameStatus.Won;
+        }
+
+        return EnumGameStatus.Playing;
     }
 
     private void UpdateUI()

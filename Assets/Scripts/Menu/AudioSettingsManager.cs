@@ -67,7 +67,7 @@ public class AudioSettingsManager : MonoBehaviour
     private void SetVolume(string exposedParam, float volume)
     {
         // Clamp volume min 0.0001f pour éviter log(0)
-        float clampedVolume = Mathf.Clamp(volume, 0.0001f, sliderMax(exposedParam) );
+        float clampedVolume = Mathf.Clamp(volume, 0.0001f, sliderMax(exposedParam));
         float dB = Mathf.Log10(clampedVolume) * 20f;
         audioMixer.SetFloat(exposedParam, dB);
     }

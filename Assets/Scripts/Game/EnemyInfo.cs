@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Data.Common;
 
 public class EnemyInfo : MonoBehaviour
 {
@@ -12,10 +11,11 @@ public class EnemyInfo : MonoBehaviour
     public List<EnumCardType.CardType> weaknesses = new List<EnumCardType.CardType>();
     public List<EnumCardType.CardType> resistances = new List<EnumCardType.CardType>();
     public TextMeshProUGUI enemyNameText;
+    public TextMeshProUGUI EOGEnemyNameText;
     public void Init()
     {
-        level = PlayerPrefs.GetInt("EnemyLevel", 1);
-        enemyName = PlayerPrefs.GetString("EnemyName", "Unknown Enemy");
+        level = StaticEnemyInfo.level;
+        enemyName = StaticEnemyInfo.name;
 
         turnToAttack = level + 1;
         weaknesses.Clear();
@@ -23,13 +23,13 @@ public class EnemyInfo : MonoBehaviour
 
         if (level == 1)
         {
-            GetRandomTypeList(2, 2);
+            GetRandomTypeList(1, 1);
         }
         else if (level == 2)
         {
             GetRandomTypeList(2, 2);
         }
-        else
+        else if (level == 3)
         {
             GetRandomTypeList(1, 2);
         }
@@ -128,12 +128,22 @@ public class EnemyInfo : MonoBehaviour
     private void UpdateUI()
     {
         enemyNameText.text = enemyName;
+        EOGEnemyNameText.text = enemyName;
     }
 
-    public void Save()
+    public int GetExpReward()
     {
-        PlayerPrefs.SetInt("EnemyLevel", level);
-        PlayerPrefs.SetString("EnemyName", enemyName);
-        PlayerPrefs.Save();
+        if (level == 1)
+        {
+            return 10;
+        }
+        else if (level == 2)
+        {
+            return 50;
+        }
+        else
+        {
+            return 200;
+        }
     }
 }

@@ -6,6 +6,7 @@ public class EnemyTurn : MonoBehaviour
 
     public void Init()
     {
+        enemyInfo = GetComponent<EnemyInfo>();
         enemyInfo.Init();
     }
     public int GetDamageFromCard(CardInfo cardInfo)

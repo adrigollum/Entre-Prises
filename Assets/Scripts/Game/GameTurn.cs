@@ -6,10 +6,14 @@ public class GameTurn : MonoBehaviour
     private PlayerTurn playerTurn;
     private EnemyTurn enemyTurn;
     private GameInfo gameInfo;
-    public TextMeshProUGUI turnsText;
-
     public int turnCount = 0;
     public bool hadCardPlayed = false;
+
+    [Header("UI Elements")]
+    public GameObject GameCanvas;
+    public GameObject EndOfGameCanvas;
+    public TextMeshProUGUI EndOfGameText;
+    public TextMeshProUGUI turnsText;
 
     public void Start()
     {
@@ -19,9 +23,14 @@ public class GameTurn : MonoBehaviour
         enemyTurn = GetComponent<EnemyTurn>();
         gameInfo = GetComponent<GameInfo>();
 
-        gameInfo.Init();
-        playerTurn.Init();
         enemyTurn.Init();
+        playerTurn.Init();
+        // Depends on Enemy level
+        gameInfo.Init();
+
+        GameCanvas.SetActive(true);
+        EndOfGameCanvas.SetActive(false);
+        EndOfGameText.text = string.Empty;
 
         UpdateUI();
     }
@@ -41,12 +50,34 @@ public class GameTurn : MonoBehaviour
             gameInfo.AddStat(damage);
         }
 
+        TriggerEndOfGame();
         hadCardPlayed = cardPlayed || hadCardPlayed; // Track if any card was played this turn
         return cardPlayed;
     }
     public void RepositionAllCards()
     {
         playerTurn.RepositionAllCards();
+    }
+    public void TriggerEndOfGame()
+    {
+        if (gameInfo.GetGameStatus() == EnumGameStatus.Playing)
+        {
+            return;
+        }
+
+        if (gameInfo.GetGameStatus() == EnumGameStatus.Lost)
+        {
+            EndOfGameText.text = "You lost! Better luck next time!";
+        }
+        else if (gameInfo.GetGameStatus() == EnumGameStatus.Won)
+        {
+            EndOfGameText.text = "You won! Congratulations!";
+        }
+
+        playerTurn.playerInfo.exp += enemyTurn.enemyInfo.GetExpReward();
+        playerTurn.Save();
+        EndOfGameCanvas.SetActive(true);
+        GameCanvas.SetActive(false);
     }
 
     public void DiscardCard(GameObject card)
@@ -61,6 +92,16 @@ public class GameTurn : MonoBehaviour
         EndTurn();
     }
 
+    private int CalcWattctionGain()
+    {
+        int wattctionGain = 2 + (playerTurn.playerInfo.level - 1) / 2;
+
+        if (!hadCardPlayed)
+        {
+            wattctionGain += playerTurn.playerInfo.level;
+        }
+        return wattctionGain;
+    }
     public void EndTurn()
     {
         turnCount++;
@@ -73,20 +114,18 @@ public class GameTurn : MonoBehaviour
 
         playerTurn.DrawCards();
 
-        int wattctionGain = playerTurn.playerInfo.level;
-        if (!hadCardPlayed)
-        {
-            wattctionGain *= 2;
-        }
+        int wattctionGain = CalcWattctionGain();
 
         playerTurn.playerInfo.AddWattction(wattctionGain);
 
         hadCardPlayed = false;
         UpdateUI();
+
+        TriggerEndOfGame();
     }
 
     public void UpdateUI()
     {
-        turnsText.text = "Tours avant attaque : " + (enemyTurn.enemyInfo.turnToAttack - (turnCount % enemyTurn.enemyInfo.turnToAttack)).ToString();
+        turnsText.text = (enemyTurn.enemyInfo.turnToAttack - (turnCount % enemyTurn.enemyInfo.turnToAttack)).ToString();
     }
 }

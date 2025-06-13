@@ -1088,7 +1088,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.49, y: 0.02, z: 0.6844445}
+  m_LocalScale: {x: 0.4, y: 0.01632653, z: 0.5587302}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9072622949463675070}
@@ -1186,9 +1186,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  targetPosition: {x: 0, y: -1, z: 0}
-  percentScreenCardPlayed: 0.7
-  isInPlayingArea: 0
+  targetPosition: {x: Infinity, y: Infinity, z: Infinity}
+  percentScreenUpY: 0.7
+  percentScreenCardPlayedX: 0.5
   selectedOffset: 0.5
 --- !u!114 &9082912141924585233
 MonoBehaviour:
