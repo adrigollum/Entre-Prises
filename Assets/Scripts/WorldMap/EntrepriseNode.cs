@@ -1,56 +1,81 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
-public enum EtatEntreprise {
-    Neutre,
-    Gagnee,
+public enum EnterPriseState
+{
+    Neutral,
+    Win,
     APortee,
     Perdue
 }
 
 [RequireComponent(typeof(Button))]
-public class EntrepriseNode : MonoBehaviour {
+public class EntrepriseNode : MonoBehaviour
+{
     public string nom;
     public int niveau;
-    public EtatEntreprise etat;
+    public EnterPriseState etat;
     public List<EntrepriseNode> connexions;
-
-    // couleurs définies dans l’inspecteur
-    public Color couleurNeutre = Color.gray;
-    public Color couleurGagnee = Color.green;
-    public Color couleurAPortee = Color.red;
-    public Color couleurPerdue = Color.black;
 
     private Image imageBouton;
 
-    void Awake() {
+    void Awake()
+    {
         // Récupère automatiquement l’image du bouton
         imageBouton = GetComponent<Image>();
-        if (imageBouton == null) {
-            Debug.LogError($"{name} n’a pas de composant Image sur le même objet que le Button !");
+
+        etat = EnumGameStatusToEnterPriseState(
+            StaticEntreprisesSaveManager.GetEnemyStatus(nom));
+
+        Button button = GetComponent<Button>();
+        button.onClick.AddListener(OnClick);
+    }
+
+    public void OnClick()
+    {
+        if (etat == EnterPriseState.APortee)
+        {
+            StaticEnemyInfo.name = nom;
+            StaticEnemyInfo.level = niveau;
+            SceneManager.LoadScene("Combat");
+        }
+        else
+        {
+            Debug.LogWarning($"Le combat contre {nom} n'est pas disponible dans l'état actuel : {etat}");
         }
     }
-    
-    
+    private EnterPriseState EnumGameStatusToEnterPriseState(EnumGameStatus gameStatus)
+    {
+        switch (gameStatus)
+        {
+            case EnumGameStatus.Won:
+                return EnterPriseState.Win;
+            case EnumGameStatus.Lost:
+                return EnterPriseState.Perdue;
+            default:
+                return EnterPriseState.Neutral;
+        }
+    }
 
-    public void MettreAJourCouleur()
+    public void UpdateColor()
     {
         if (imageBouton == null) return;
 
         switch (etat)
         {
-            case EtatEntreprise.Neutre:
-                imageBouton.color = couleurNeutre;
+            case EnterPriseState.Neutral:
+                imageBouton.color = MapController.colorNeutral;
                 break;
-            case EtatEntreprise.Gagnee:
-                imageBouton.color = couleurGagnee;
+            case EnterPriseState.Win:
+                imageBouton.color = MapController.colorWin;
                 break;
-            case EtatEntreprise.APortee:
-                imageBouton.color = couleurAPortee;
+            case EnterPriseState.APortee:
+                imageBouton.color = MapController.colorNear;
                 break;
-            case EtatEntreprise.Perdue:
-                imageBouton.color = couleurPerdue;
+            case EnterPriseState.Perdue:
+                imageBouton.color = MapController.colorLost;
                 break;
         }
     }

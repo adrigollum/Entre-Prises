@@ -24,4 +24,9 @@ public class EnemyTurn : MonoBehaviour
     {
         return enemyInfo.GetAttackDamage();
     }
+
+    public void Save(EnumGameStatus gameStatus)
+    {
+        enemyInfo.Save(gameStatus);
+    }
 }

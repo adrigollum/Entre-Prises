@@ -146,4 +146,9 @@ public class EnemyInfo : MonoBehaviour
             return 200;
         }
     }
+
+    public void Save(EnumGameStatus gameStatus)
+    {
+        StaticEntreprisesSaveManager.Save(gameStatus, enemyName);
+    }
 }

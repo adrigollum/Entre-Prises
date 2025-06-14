@@ -60,22 +60,25 @@ public class GameTurn : MonoBehaviour
     }
     public void TriggerEndOfGame()
     {
-        if (gameInfo.GetGameStatus() == EnumGameStatus.Playing)
+        EnumGameStatus gameStatus = gameInfo.GetGameStatus();
+        if (gameStatus == EnumGameStatus.Playing)
         {
             return;
         }
 
-        if (gameInfo.GetGameStatus() == EnumGameStatus.Lost)
+        if (gameStatus == EnumGameStatus.Lost)
         {
             EndOfGameText.text = "You lost! Better luck next time!";
         }
-        else if (gameInfo.GetGameStatus() == EnumGameStatus.Won)
+        else if (gameStatus == EnumGameStatus.Won)
         {
             EndOfGameText.text = "You won! Congratulations!";
         }
 
         playerTurn.playerInfo.exp += enemyTurn.enemyInfo.GetExpReward();
         playerTurn.Save();
+        enemyTurn.Save(gameStatus);
+
         EndOfGameCanvas.SetActive(true);
         GameCanvas.SetActive(false);
     }

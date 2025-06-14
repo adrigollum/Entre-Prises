@@ -13,9 +13,9 @@ public class PlayerInfo : MonoBehaviour
 
     public void Init()
     {
-        level = ExpToLevel(exp);
         exp = PlayerPrefs.GetInt("PlayerExp", 0);
-        nbEntreprise = StaticEntreprisesSaveManager.TMPREPLACE;
+        level = ExpToLevel(exp);
+        nbEntreprise = StaticEntreprisesSaveManager.CountEnemiesByStatus(EnumGameStatus.Won);
 
         maxWattction = nbEntreprise * 2;
         currentWattction = 1;

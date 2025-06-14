@@ -2864,7 +2864,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174e30705dbed3f449039d5e2c2b655a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bouton: {fileID: 568190935}
   cameraController: {fileID: 519468501}
   waypointIndex: 0
 --- !u!114 &568190935
@@ -4249,7 +4248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174e30705dbed3f449039d5e2c2b655a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bouton: {fileID: 729252813}
   cameraController: {fileID: 519468501}
   waypointIndex: 2
 --- !u!114 &729252818
@@ -4402,7 +4400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174e30705dbed3f449039d5e2c2b655a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bouton: {fileID: 735309428}
   cameraController: {fileID: 519468501}
   waypointIndex: 3
 --- !u!114 &735309432
@@ -6659,10 +6656,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 700940340}
   m_HandleRect: {fileID: 550100049}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: -1
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: -1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -7087,10 +7084,10 @@ MonoBehaviour:
   epaisseurLigne: 0.02
   spritePrise: {fileID: 21300000, guid: 96060d7c3bdb9ec46b4a8f34b0ae1ee9, type: 3}
   taillePrise: {x: 0.1, y: 0.1}
-  couleurGagnee: {r: 0, g: 1, b: 0, a: 1}
-  couleurAPortee: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  couleurNeutre: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  couleurPerdue: {r: 1, g: 0, b: 0, a: 1}
+  colorInInspectorNeutral: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  colorInInspectorWin: {r: 0, g: 1, b: 0, a: 1}
+  colorInInspectorNear: {r: 1, g: 0, b: 0, a: 1}
+  colorInInspectorLost: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &1209907101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 474909087478762915, guid: 55f7c482445dd0345844bb5b47dc5e3b, type: 3}
@@ -7475,7 +7472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174e30705dbed3f449039d5e2c2b655a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bouton: {fileID: 1213685165}
   cameraController: {fileID: 519468501}
   waypointIndex: 1
 --- !u!114 &1213685169
@@ -8509,7 +8505,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174e30705dbed3f449039d5e2c2b655a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bouton: {fileID: 0}
   cameraController: {fileID: 0}
   waypointIndex: 0
 --- !u!114 &1339838111
@@ -11031,10 +11026,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 623754911}
   m_HandleRect: {fileID: 897732686}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: -1
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: -1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -11254,10 +11249,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1626071384}
   m_HandleRect: {fileID: 93760802}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: -1
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: -1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
