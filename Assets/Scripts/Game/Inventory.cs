@@ -173,8 +173,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        RepositionAllCards();
-    }
+    // Uncomment this if you want to debug the repositioning in real-time
+    // void Update()
+    // {
+    //     RepositionAllCards();
+    // }
 }
