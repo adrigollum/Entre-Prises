@@ -31,7 +31,7 @@ public class CardInfo : MonoBehaviour
     {
         cardNameText.text = cardName;
         cardDescriptionText.text = cardDescription;
-        cardWattctionCostText.text = cardWattctionCost.ToString() + "W";
+        cardWattctionCostText.text = cardWattctionCost.ToString();
         cardFirstTypeText.text = EnumCardType.TypeToString(cardFirstType);
         cardSecondTypeText.text = EnumCardType.TypeToString(cardSecondType);
         cardStatText.text = cardStat.ToString(CultureInfo.InvariantCulture) + "%";
