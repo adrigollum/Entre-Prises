@@ -101,6 +101,7 @@ public class MenuCamMovement : MonoBehaviour
         if (index == 3 && secondaryPoint != null)
         {
             currentPath = new Transform[] { secondaryPoint, points[3] };
+            StartCoroutine(RotateObject(objectToRotate, targetRotationZ));
             Debug.Log("Déplacement fluide : point secondaire → point 3");
         }
         else
@@ -111,15 +112,8 @@ public class MenuCamMovement : MonoBehaviour
 
         isMoving = true;
 
-        int lastIndex = points.Length - 1;
-        if (previousIndex == 0 && index == lastIndex)
-        {
-            StartCoroutine(RotateObject(objectToRotate, targetRotationZ));
-        }
-        else if (previousIndex == lastIndex && index == 0)
-        {
-            StartCoroutine(RotateObject(objectToRotate, -targetRotationZ));
-        }
+        
+        
     }
 
     IEnumerator RotateObject(Transform obj, float targetZ)
