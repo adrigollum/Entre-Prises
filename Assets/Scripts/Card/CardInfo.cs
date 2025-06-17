@@ -26,6 +26,7 @@ public class CardInfo : MonoBehaviour
     public TextMeshPro cardSecondTypeText;
     public TextMeshPro cardWattctionCostText;
     public TextMeshPro cardStatText;
+    public TextMeshPro cardNumberText;
 
     private void Start()
     {
@@ -35,5 +36,10 @@ public class CardInfo : MonoBehaviour
         cardFirstTypeText.text = EnumCardType.TypeToString(cardFirstType);
         cardSecondTypeText.text = EnumCardType.TypeToString(cardSecondType);
         cardStatText.text = cardStat.ToString(CultureInfo.InvariantCulture) + "%";
+    }
+
+    public void UpdateUI()
+    {
+        cardNumberText.text = MaxCardInDeck.ToString(CultureInfo.InvariantCulture) + "x";
     }
 }
