@@ -13,11 +13,12 @@ public class EntrepriseInfoPanel : MonoBehaviour
     public List<Button> boutonsForces;
     public List<Button> boutonsFaiblesses;
 
+    public Button btnStartCombat;  // Bouton Start à lier dans l’inspecteur
+
     private string nom;
     private int niveau;
     private EnterPriseState etat;
 
-    // Ici on reçoit juste des noms, et on délègue à ForceFaiblesseItem la gestion de prix/achat
     public void Setup(string nom, int niveau, EnterPriseState etat, List<string> forces, List<string> faiblesses)
     {
         this.nom = nom;
@@ -26,6 +27,27 @@ public class EntrepriseInfoPanel : MonoBehaviour
 
         nomText.text = nom;
         niveauText.text = $"Niveau : {niveau}";
+
+        // Gérer l'affichage du texte état + activation bouton selon état
+        switch (etat)
+        {
+            case EnterPriseState.Perdue:
+                etatText.text = "Perdu";
+                break;
+
+            case EnterPriseState.Win:
+                etatText.text = "Gagné";
+                break;
+
+            case EnterPriseState.APortee:
+                etatText.text = "LetsGO";
+                break;
+
+            default:
+                etatText.text = "Loin";
+                break;
+        }
+
         // Cache tous les boutons d’abord
         foreach (var btn in boutonsForces) btn.gameObject.SetActive(false);
         foreach (var btn in boutonsFaiblesses) btn.gameObject.SetActive(false);
@@ -55,6 +77,19 @@ public class EntrepriseInfoPanel : MonoBehaviour
         }
 
         gameObject.SetActive(true);
+    }
+
+    void Start()
+    {
+        // Assurez-vous que le bouton de combat est désactivé par défaut
+        if (btnStartCombat != null)
+        {
+            btnStartCombat.onClick.AddListener(OnClickLancerCombat);
+        }
+        else
+        {
+            Debug.LogError("btnStartCombat n'est pas assigné dans l'inspecteur !");
+        }
     }
 
     public void OnClickLancerCombat()
