@@ -18,58 +18,11 @@ public class EnemyInfo : MonoBehaviour
         enemyName = StaticEnemyInfo.name;
 
         turnToAttack = level + 1;
-        weaknesses.Clear();
-        resistances.Clear();
 
-        if (level == 1)
-        {
-            GetRandomTypeList(1, 1);
-        }
-        else if (level == 2)
-        {
-            GetRandomTypeList(2, 2);
-        }
-        else if (level == 3)
-        {
-            GetRandomTypeList(1, 2);
-        }
+        weaknesses = StaticEnemyInfo.weaknesses;
+        resistances = StaticEnemyInfo.resistances;
 
         UpdateUI();
-    }
-
-    private void GetRandomTypeList(int weaknessesSize, int resistancesSize)
-    {
-        List<EnumCardType.CardType> allTypes = new List<EnumCardType.CardType>();
-
-        foreach (EnumCardType.CardType type in System.Enum.GetValues(typeof(EnumCardType.CardType)))
-        {
-            if (type == EnumCardType.CardType.None)
-            {
-                continue;
-            }
-            allTypes.Add(type);
-        }
-
-        if (allTypes.Count < weaknessesSize + resistancesSize)
-        {
-            Debug.LogError("Not enough types to assign weaknesses and resistances.");
-            return;
-        }
-
-        weaknesses.Clear();
-        resistances.Clear();
-        for (int i = 0; i < weaknessesSize; i++)
-        {
-            int randomIndex = Random.Range(0, allTypes.Count);
-            weaknesses.Add(allTypes[randomIndex]);
-            allTypes.RemoveAt(randomIndex);
-        }
-        for (int i = 0; i < resistancesSize; i++)
-        {
-            int randomIndex = Random.Range(0, allTypes.Count);
-            resistances.Add(allTypes[randomIndex]);
-            allTypes.RemoveAt(randomIndex);
-        }
     }
 
     private int CalcDamage(int damage, EnumCardType.CardType cardType)

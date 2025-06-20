@@ -8,7 +8,7 @@ public class ForceFaiblesseItem : MonoBehaviour
     public TextMeshProUGUI prixTMP;
     public Button bouton;
 
-    private string nom;
+    public string nom;
     private bool estForce;
     private bool estAchete = false;
     private int prix = 100; // Exemple, tu peux adapter par force/faiblesse
@@ -30,21 +30,21 @@ public class ForceFaiblesseItem : MonoBehaviour
     }
 
     private void MettreAJourAffichage()
-{
-    if (estAchete)
     {
-        nomTMP.text = nom;
-        prixTMP.text = "Acquis";
-        prixTMP.color = Color.green;
+        if (estAchete)
+        {
+            nomTMP.text = nom;
+            prixTMP.text = "Acquis";
+            prixTMP.color = Color.green;
+        }
+        else
+        {
+            // Affiche juste "Force" ou "Faiblesse" sans le prix ni le nom
+            nomTMP.text = estForce ? "Force" : "Faiblesse";
+            prixTMP.text = $"{prix}"; // ou tu peux laisser vide
+            prixTMP.color = Color.red;
+        }
     }
-    else
-    {
-        // Affiche juste "Force" ou "Faiblesse" sans le prix ni le nom
-        nomTMP.text = estForce ? "Force" : "Faiblesse";
-        prixTMP.text = $"{prix}"; // ou tu peux laisser vide
-        prixTMP.color = Color.red;
-    }
-}
 
     // Méthode pour simuler l'achat
     public void Acheter()

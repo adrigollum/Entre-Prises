@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class EnumCardType
 {
     public enum CardType
@@ -14,7 +16,7 @@ public class EnumCardType
         switch (type)
         {
             case CardType.Cafe:
-                return "Caf�";
+                return "Café";
             case CardType.Gift:
                 return "Cadeau";
             case CardType.ChitChat:
@@ -23,6 +25,22 @@ public class EnumCardType
                 return "Pot-de-vin";
             default:
                 return "";
+        }
+    }
+    public static CardType StringToType(string type)
+    {
+        switch (type)
+        {
+            case "Café":
+                return CardType.Cafe;
+            case "Cadeau":
+                return CardType.Gift;
+            case "Papotage":
+                return CardType.ChitChat;
+            case "Pot-de-vin":
+                return CardType.Bribe;
+            default:
+                return CardType.None;
         }
     }
 }

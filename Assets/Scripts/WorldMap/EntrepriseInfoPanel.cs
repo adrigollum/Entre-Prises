@@ -98,6 +98,25 @@ public class EntrepriseInfoPanel : MonoBehaviour
         {
             StaticEnemyInfo.name = nom;
             StaticEnemyInfo.level = niveau;
+
+            StaticEnemyInfo.weaknesses = new List<EnumCardType.CardType>();
+            StaticEnemyInfo.resistances = new List<EnumCardType.CardType>();
+            foreach (var forces in boutonsForces)
+            {
+                ForceFaiblesseItem item = forces.GetComponent<ForceFaiblesseItem>();
+                if (item != null && EnumCardType.StringToType(item.nom) != EnumCardType.CardType.None)
+                {
+                    StaticEnemyInfo.weaknesses.Add(EnumCardType.StringToType(item.nom));
+                }
+            }
+            foreach (var faiblesses in boutonsFaiblesses)
+            {
+                ForceFaiblesseItem item = faiblesses.GetComponent<ForceFaiblesseItem>();
+                if (item != null && EnumCardType.StringToType(item.nom) != EnumCardType.CardType.None)
+                {
+                    StaticEnemyInfo.resistances.Add(EnumCardType.StringToType(item.nom));
+                }
+            }
             SceneManager.LoadScene("Combat");
         }
         else

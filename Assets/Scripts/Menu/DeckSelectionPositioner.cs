@@ -111,7 +111,6 @@ public class DeckSelectionPositioner : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("Card not found in save: " + cardInfo.cardName);
                     Destroy(child.gameObject);
                 }
             }

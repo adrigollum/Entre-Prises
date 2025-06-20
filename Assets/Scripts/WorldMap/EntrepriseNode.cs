@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System;
 
 public enum EnterPriseState
 {
@@ -21,8 +22,8 @@ public class EntrepriseNode : MonoBehaviour
 
     public EntrepriseInfoPanel infoPanel;
 
-    public List<string> forces = new();
-    public List<string> faiblesses = new();
+    public List<string> resistances = new List<string>();
+    public List<string> weaknesses = new List<string>();
 
     private Image imageBouton;
 
@@ -32,79 +33,51 @@ public class EntrepriseNode : MonoBehaviour
         etat = EnumGameStatusToEnterPriseState(
             StaticEntreprisesSaveManager.GetEnemyStatus(nom));
 
-        GenererForcesFaiblesses();
+        GetTypesFromSave();
 
         GetComponent<Button>().onClick.AddListener(OnClick);
     }
 
-    void GenererForcesFaiblesses()
-{
-    if (forces.Count > 0 || faiblesses.Count > 0) return;
-
-    System.Random rand = new();
-
-    // 4 paires exclusives
-    List<(string force, string faiblesse)> pairesDisponibles = new()
+    private void GetTypesFromSave()
     {
-        ("Allergique au café", "Dépendant du café"),
-        ("Capitellophobe", "Imbu de sa personne"),
-        ("Introvertie", "Pipelette"),
-        ("Intègre", "Radin")
-    };
+        weaknesses.Clear();
+        resistances.Clear();
 
-    int nbForces = 0;
-    int nbFaiblesses = 0;
+        Tuple<List<EnumCardType.CardType>, List<EnumCardType.CardType>> types = StaticEnemyInfo.GetSaveEnemyInfo(nom);
 
-    switch (niveau)
-    {
-        case 1:
-            nbForces = 1;
-            nbFaiblesses = 1;
-            break;
-        case 2:
-            nbForces = 2;
-            nbFaiblesses = 2;
-            break;
-        case 3:
-            nbForces = 2;
-            nbFaiblesses = 1;
-            break;
-    }
-
-    // Shuffle des paires
-    List<(string force, string faiblesse)> shuffled = new(pairesDisponibles);
-    for (int i = 0; i < shuffled.Count; i++)
-    {
-        int j = rand.Next(i, shuffled.Count);
-        (shuffled[i], shuffled[j]) = (shuffled[j], shuffled[i]);
-    }
-
-    int totalATirer = nbForces + nbFaiblesses;
-    for (int i = 0; i < totalATirer && i < shuffled.Count; i++)
-    {
-        var paire = shuffled[i];
-
-        // Tirer d'abord les faiblesses, puis les forces
-        if (nbFaiblesses > 0)
+        if (types == null)
         {
-            faiblesses.Add(paire.faiblesse);
-            nbFaiblesses--;
+            if (niveau == 1)
+            {
+                types = StaticEnemyInfo.GetRandomTypeList(1, 1);
+            }
+            else if (niveau == 2)
+            {
+                types = StaticEnemyInfo.GetRandomTypeList(2, 2);
+            }
+            else
+            {
+                types = StaticEnemyInfo.GetRandomTypeList(1, 2);
+            }
         }
-        else if (nbForces > 0)
-        {
-            forces.Add(paire.force);
-            nbForces--;
-        }
-    }
-}
 
+        if (types == null)
+        {
+            Debug.LogError("Failed to get types for enemy: " + nom);
+            return;
+        }
+        StaticEnemyInfo.SaveEnemyInfo(nom, types.Item1, types.Item2);
+
+        weaknesses = types.Item1.ConvertAll(type => EnumCardType.TypeToString(type));
+        resistances = types.Item2.ConvertAll(type => EnumCardType.TypeToString(type));
+    }
 
     public void OnClick()
     {
         if (infoPanel != null)
         {
             infoPanel.gameObject.SetActive(true); // Active le panel si désactivé
-            infoPanel.Setup(nom, niveau, etat, forces, faiblesses);
+            infoPanel.Setup(nom, niveau, etat, weaknesses, resistances);
         }
         else
         {
