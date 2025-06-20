@@ -111,9 +111,6 @@ public class MenuCamMovement : MonoBehaviour
         }
 
         isMoving = true;
-
-        
-        
     }
 
     IEnumerator RotateObject(Transform obj, float targetZ)

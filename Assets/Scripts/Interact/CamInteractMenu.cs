@@ -18,6 +18,10 @@ public class CamInteractMenu : MonoBehaviour
     void Start()
     {
         mainCamera = GetComponent<Camera>();
+        notDeckSelectionPositioner.maxDeckSize = int.MaxValue;
+
+        deckSelectionPositioner.Init(StaticDeckSave.DeckType.Deck);
+        notDeckSelectionPositioner.Init(StaticDeckSave.DeckType.NotDeck);
     }
 
     private void HandleCardClick(CardClick hit)
@@ -32,14 +36,22 @@ public class CamInteractMenu : MonoBehaviour
             else if (cardSelected == card)
             {
                 CardMovement.CardArea cardArea = cardSelected.GetComponent<CardMovement>().IsInPlayingArea();
-                // if (cardArea == CardMovement.CardArea.PlayingArea)
-                // {
-                //     gameTurn.PlayCard(cardSelected);
-                // }
-                // else if (cardArea == CardMovement.CardArea.DiscardArea)
-                // {
-                //     gameTurn.DiscardCard(cardSelected);
-                // }
+                if (cardArea == CardMovement.CardArea.PlayingArea)
+                {
+                    if (deckSelectionPositioner.AddCard(cardSelected))
+                    {
+                        notDeckSelectionPositioner.RemoveCard(cardSelected);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Cannot add card to deck, deck is full or card already exists in deck.");
+                    }
+                }
+                else if (cardArea == CardMovement.CardArea.DiscardArea)
+                {
+                    notDeckSelectionPositioner.AddCard(cardSelected);
+                    deckSelectionPositioner.RemoveCard(cardSelected);
+                }
                 deckSelectionPositioner.RepositionAllCards();
                 notDeckSelectionPositioner.RepositionAllCards();
                 cardSelected = null;

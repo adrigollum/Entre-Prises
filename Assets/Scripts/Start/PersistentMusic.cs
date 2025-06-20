@@ -9,7 +9,7 @@ public class PersistentMusic : MonoBehaviour
 
     private static PersistentMusic instance;
 
-    void Awake()
+    void Start()
     {
         // Singleton temporaire
         if (instance != null)

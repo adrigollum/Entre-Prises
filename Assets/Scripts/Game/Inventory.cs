@@ -17,12 +17,21 @@ public class Inventory : MonoBehaviour
 
         Debug.Log("Initializing Inventory...");
         Transform allCardsTransform = transform.Find("AllCards");
+
+        Dictionary<string, int> save = StaticDeckSave.GetDeck(StaticDeckSave.DeckType.Deck);
         if (allCardsTransform != null)
         {
             foreach (Transform child in allCardsTransform)
             {
                 if (child.gameObject.GetComponent<CardInfo>() != null)
                 {
+                    CardInfo cardInfo = child.gameObject.GetComponent<CardInfo>();
+                    cardInfo.MaxCardInDeck = 0;
+
+                    if (save.ContainsKey(cardInfo.cardName))
+                    {
+                        cardInfo.MaxCardInDeck = save[cardInfo.cardName];
+                    }
                     allCardDeck.Add(child.gameObject);
                 }
                 else

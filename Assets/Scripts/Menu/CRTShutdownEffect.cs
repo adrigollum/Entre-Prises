@@ -45,33 +45,33 @@ public class CRTShutdownEffect : MonoBehaviour
     }
 
     private System.Collections.IEnumerator ShutdownCRT()
-{
-    Vector3 originalScale = rectTransform.localScale;
-
-    // Phase 1 : réduction verticale
-    float t = 0f;
-    while (t < duration / 2f)
     {
-        t += Time.deltaTime;
-        float scaleY = Mathf.Max(0.01f, 1f - (t / (duration / 2f)));
-        rectTransform.localScale = new Vector3(originalScale.x, originalScale.y * scaleY, originalScale.z);
-        yield return null;
+        Vector3 originalScale = rectTransform.localScale;
+
+        // Phase 1 : réduction verticale
+        float t = 0f;
+        while (t < duration / 2f)
+        {
+            t += Time.deltaTime;
+            float scaleY = Mathf.Max(0.01f, 1f - (t / (duration / 2f)));
+            rectTransform.localScale = new Vector3(originalScale.x, originalScale.y * scaleY, originalScale.z);
+            yield return null;
+        }
+
+        // Phase 2 : réduction horizontale
+        t = 0f;
+        while (t < duration / 2f)
+        {
+            t += Time.deltaTime;
+            float scaleX = Mathf.Max(0.01f, 1f - (t / (duration / 2f)));
+            rectTransform.localScale = new Vector3(originalScale.x * scaleX, 0.01f, originalScale.z);
+            yield return null;
+        }
+
+        targetRawImage.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+
+        // Changer de scène ici (remplace "NomDeTaScene" par le nom exact)
+        SceneManager.LoadScene("MainMenu");
     }
-
-    // Phase 2 : réduction horizontale
-    t = 0f;
-    while (t < duration / 2f)
-    {
-        t += Time.deltaTime;
-        float scaleX = Mathf.Max(0.01f, 1f - (t / (duration / 2f)));
-        rectTransform.localScale = new Vector3(originalScale.x * scaleX, 0.01f, originalScale.z);
-        yield return null;
-    }
-
-    targetRawImage.gameObject.SetActive(false);
-    gameObject.SetActive(false);
-
-    // Changer de scène ici (remplace "NomDeTaScene" par le nom exact)
-    SceneManager.LoadScene("MainMenu");
-}
 }
