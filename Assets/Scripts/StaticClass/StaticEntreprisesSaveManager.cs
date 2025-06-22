@@ -82,6 +82,25 @@ public static class StaticEntreprisesSaveManager
         string enemiesBattled = PlayerPrefs.GetString(enemiesBattledKey, "");
         string separator = string.IsNullOrEmpty(enemiesBattled) ? "" : "|";
         PlayerPrefs.SetString(enemiesBattledKey, enemiesBattled + separator + enemyName);
+
+        if (gameStatus == EnumGameStatus.Won)
+        {
+            PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money", 0) + 10);
+        }
+
+        PlayerPrefs.Save();
+    }
+
+    public static bool IsForceFaiblesseAchetee(string entrepriseNom, string nom, bool estForce)
+    {
+        string key = $"{entrepriseNom}_{nom}_{(estForce ? "force" : "faiblesse")}";
+        return PlayerPrefs.GetInt(key, 0) == 1;
+    }
+
+    public static void SetForceFaiblesseAchetee(string entrepriseNom, string nom, bool estForce, bool value = true)
+    {
+        string key = $"{entrepriseNom}_{nom}_{(estForce ? "force" : "faiblesse")}";
+        PlayerPrefs.SetInt(key, value ? 1 : 0);
         PlayerPrefs.Save();
     }
 }

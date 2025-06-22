@@ -19,7 +19,7 @@ public class EntrepriseInfoPanel : MonoBehaviour
     private int niveau;
     private EnterPriseState etat;
 
-    public void Setup(string nom, int niveau, EnterPriseState etat, List<string> forces, List<string> faiblesses)
+    public void Setup(string nom, int niveau, EnterPriseState etat, List<string> weaknesses, List<string> resistances)
     {
         this.nom = nom;
         this.niveau = niveau;
@@ -53,25 +53,25 @@ public class EntrepriseInfoPanel : MonoBehaviour
         foreach (var btn in boutonsFaiblesses) btn.gameObject.SetActive(false);
 
         // Active et initialise les boutons forces
-        for (int i = 0; i < forces.Count && i < boutonsForces.Count; i++)
+        for (int i = 0; i < resistances.Count && i < boutonsForces.Count; i++)
         {
             boutonsForces[i].gameObject.SetActive(true);
 
             ForceFaiblesseItem item = boutonsForces[i].GetComponent<ForceFaiblesseItem>();
             if (item != null)
-                item.Initialiser(forces[i], true);
+                item.Initialiser(nom, resistances[i], true);
             else
                 Debug.LogWarning("ForceFaiblesseItem manquant sur bouton force");
         }
 
         // Active et initialise les boutons faiblesses
-        for (int i = 0; i < faiblesses.Count && i < boutonsFaiblesses.Count; i++)
+        for (int i = 0; i < weaknesses.Count && i < boutonsFaiblesses.Count; i++)
         {
             boutonsFaiblesses[i].gameObject.SetActive(true);
 
             ForceFaiblesseItem item = boutonsFaiblesses[i].GetComponent<ForceFaiblesseItem>();
             if (item != null)
-                item.Initialiser(faiblesses[i], false);
+                item.Initialiser(nom, weaknesses[i], false);
             else
                 Debug.LogWarning("ForceFaiblesseItem manquant sur bouton faiblesse");
         }
@@ -99,24 +99,6 @@ public class EntrepriseInfoPanel : MonoBehaviour
             StaticEnemyInfo.name = nom;
             StaticEnemyInfo.level = niveau;
 
-            StaticEnemyInfo.weaknesses = new List<EnumCardType.CardType>();
-            StaticEnemyInfo.resistances = new List<EnumCardType.CardType>();
-            foreach (var forces in boutonsForces)
-            {
-                ForceFaiblesseItem item = forces.GetComponent<ForceFaiblesseItem>();
-                if (item != null && EnumCardType.StringToType(item.nom) != EnumCardType.CardType.None)
-                {
-                    StaticEnemyInfo.weaknesses.Add(EnumCardType.StringToType(item.nom));
-                }
-            }
-            foreach (var faiblesses in boutonsFaiblesses)
-            {
-                ForceFaiblesseItem item = faiblesses.GetComponent<ForceFaiblesseItem>();
-                if (item != null && EnumCardType.StringToType(item.nom) != EnumCardType.CardType.None)
-                {
-                    StaticEnemyInfo.resistances.Add(EnumCardType.StringToType(item.nom));
-                }
-            }
             SceneManager.LoadScene("Combat");
         }
         else

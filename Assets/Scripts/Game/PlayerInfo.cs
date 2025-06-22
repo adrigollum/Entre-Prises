@@ -14,7 +14,7 @@ public class PlayerInfo : MonoBehaviour
     public void Init()
     {
         exp = PlayerPrefs.GetInt("PlayerExp", 0);
-        level = ExpToLevel(exp);
+        level = StaticPlayerInfo.ExpToLevel(exp);
         nbEntreprise = StaticEntreprisesSaveManager.CountEnemiesByStatus(EnumGameStatus.Won);
 
         maxWattction = nbEntreprise * 2;
@@ -76,35 +76,6 @@ public class PlayerInfo : MonoBehaviour
     private void UpdateUI()
     {
         wattctionText.text = currentWattction.ToString() + "/" + maxWattction.ToString();
-    }
-
-    private int ExpToLevel(int exp)
-    {
-        int level2Exp = 50;
-        int level3Exp = 100;
-        int level4Exp = 350;
-        int level5Exp = 600;
-
-        if (exp < level2Exp)
-        {
-            return 1;
-        }
-        else if (exp < level2Exp + level3Exp)
-        {
-            return 2;
-        }
-        else if (exp < level2Exp + level3Exp + level4Exp)
-        {
-            return 3;
-        }
-        else if (exp < level2Exp + level3Exp + level4Exp + level5Exp)
-        {
-            return 4;
-        }
-        else
-        {
-            return 5;
-        }
     }
 
     public void Save()

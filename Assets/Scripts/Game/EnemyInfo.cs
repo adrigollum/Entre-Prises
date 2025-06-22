@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class EnemyInfo : MonoBehaviour
 {
@@ -19,14 +20,36 @@ public class EnemyInfo : MonoBehaviour
 
         turnToAttack = level + 1;
 
-        weaknesses = StaticEnemyInfo.weaknesses;
-        resistances = StaticEnemyInfo.resistances;
+        Tuple<List<EnumCardType.CardType>, List<EnumCardType.CardType>> types = StaticEnemyInfo.GetSaveEnemyInfo(enemyName);
+        if (types == null)
+        {
+            if (level == 1)
+            {
+                types = StaticEnemyInfo.GetRandomTypeList(1, 1);
+            }
+            else if (level == 2)
+            {
+                types = StaticEnemyInfo.GetRandomTypeList(2, 2);
+            }
+            else
+            {
+                types = StaticEnemyInfo.GetRandomTypeList(1, 2);
+            }
+        }
+
+        weaknesses = types.Item1;
+        resistances = types.Item2;
 
         UpdateUI();
     }
 
     private int CalcDamage(int damage, EnumCardType.CardType cardType)
     {
+        if (cardType == EnumCardType.CardType.None)
+        {
+            return 0;
+        }
+
         int mult = 1;
 
         if (weaknesses.Contains(cardType))
@@ -69,7 +92,7 @@ public class EnemyInfo : MonoBehaviour
             strongDamage = 60;
         }
 
-        int randomValue = Random.Range(0, 100);
+        int randomValue = UnityEngine.Random.Range(0, 100);
         if (randomValue < 20)
         {
             return strongDamage;

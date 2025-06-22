@@ -12,15 +12,16 @@ public class ForceFaiblesseItem : MonoBehaviour
     private bool estForce;
     private bool estAchete = false;
     private int prix = 100; // Exemple, tu peux adapter par force/faiblesse
+    private string entrepriseNom;
 
     // Initialisation appelée par le panel avec le nom et si c'est force ou faiblesse
-    public void Initialiser(string nom, bool estForce)
+    public void Initialiser(string entrepriseNom, string nom, bool estForce)
     {
         this.nom = nom;
         this.estForce = estForce;
+        this.entrepriseNom = entrepriseNom;
 
-        // Ici tu peux définir un prix selon la force/faiblesse (exemple simple)
-        prix = estForce ? 100 : 50;
+        estAchete = StaticEntreprisesSaveManager.IsForceFaiblesseAchetee(entrepriseNom, nom, estForce);
 
         MettreAJourAffichage();
 
@@ -49,12 +50,13 @@ public class ForceFaiblesseItem : MonoBehaviour
     // Méthode pour simuler l'achat
     public void Acheter()
     {
-        if (!estAchete)
+        if (!estAchete && MenuMoney.AddMoney(-prix))
         {
             // Ici tu peux rajouter la logique de coût / ressources, etc.
             estAchete = true;
             MettreAJourAffichage();
             Debug.Log($"Tu as acheté : {nom}");
+            StaticEntreprisesSaveManager.SetForceFaiblesseAchetee(entrepriseNom, nom, estForce);
         }
     }
 }

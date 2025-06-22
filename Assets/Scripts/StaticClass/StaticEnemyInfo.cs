@@ -1,21 +1,26 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using UnityEngine;
 
 public static class StaticEnemyInfo
 {
     public static string name = "Unknown Enemy";
     public static int level = 1;
-    public static List<EnumCardType.CardType> weaknesses = new List<EnumCardType.CardType>();
-    public static List<EnumCardType.CardType> resistances = new List<EnumCardType.CardType>();
+
+    private static bool isRandomInitialized = false;
 
     public static Tuple<List<EnumCardType.CardType>, List<EnumCardType.CardType>> GetRandomTypeList(int weaknessesSize, int resistancesSize)
     {
+        if (isRandomInitialized == false)
+        {
+            isRandomInitialized = true;
+            UnityEngine.Random.InitState((int)DateTime.Now.Ticks);
+        }
+
         List<EnumCardType.CardType> allTypes = new List<EnumCardType.CardType>();
 
-        foreach (EnumCardType.CardType type in System.Enum.GetValues(typeof(EnumCardType.CardType)))
+        foreach (EnumCardType.CardType type in Enum.GetValues(typeof(EnumCardType.CardType)))
         {
             if (type == EnumCardType.CardType.None)
             {
