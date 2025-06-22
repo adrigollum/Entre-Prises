@@ -92,9 +92,9 @@ public class GameTurn : MonoBehaviour
         else if (gameStatus == EnumGameStatus.Won)
         {
             EndOfGameText.text = "Vous avez gagné !";
+            playerTurn.playerInfo.exp += enemyTurn.enemyInfo.GetExpReward();
         }
 
-        playerTurn.playerInfo.exp += enemyTurn.enemyInfo.GetExpReward();
         playerTurn.Save();
         enemyTurn.Save(gameStatus);
 
