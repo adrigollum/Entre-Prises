@@ -1364,8 +1364,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   targetPosition: {x: Infinity, y: Infinity, z: Infinity}
-  percentScreenUpY: 0.7
-  percentScreenCardPlayedX: 0.5
+  percentScreenUpY: 0.481
+  percentScreenCardPlayedX: 0.447
   selectedOffset: 0.5
 --- !u!114 &9082912141924585233
 MonoBehaviour:

@@ -55,10 +55,16 @@ public class EnemyInfo : MonoBehaviour
         if (weaknesses.Contains(cardType))
         {
             mult = 2;
+            StaticGameActionLogs.AddPlayingCardLog(damage * mult, cardType, StaticGameActionLogs.EnumCardEffect.Weak);
         }
         else if (resistances.Contains(cardType))
         {
             mult = -1;
+            StaticGameActionLogs.AddPlayingCardLog(damage * mult, cardType, StaticGameActionLogs.EnumCardEffect.Resistant);
+        }
+        else
+        {
+            StaticGameActionLogs.AddPlayingCardLog(damage * mult, cardType, StaticGameActionLogs.EnumCardEffect.Neutral);
         }
 
         return damage * mult;

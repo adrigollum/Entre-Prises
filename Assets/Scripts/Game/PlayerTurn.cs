@@ -21,9 +21,9 @@ public class PlayerTurn : MonoBehaviour
         return playerInfo.PlayCard(card);
     }
 
-    public void DiscardCard(GameObject card)
+    public int DiscardCard(GameObject card)
     {
-        playerInfo.DiscardCard(card);
+        return playerInfo.DiscardCard(card);
     }
 
     public void RepositionAllCards()

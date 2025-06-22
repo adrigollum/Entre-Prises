@@ -6,6 +6,7 @@ public class CamInteract : MonoBehaviour
     private Camera mainCamera;
     private GameTurn gameTurn;
     public GameObject cardSelected;
+    public GameObject PlayingAreaUI;
 
     public float minCardDistance = 1.5f;
     public float maxCardDistance = 3f;
@@ -17,6 +18,7 @@ public class CamInteract : MonoBehaviour
 
         GameObject gameManager = GameObject.Find("GameManager");
         gameTurn = gameManager.GetComponent<GameTurn>();
+        PlayingAreaUI.SetActive(false);
     }
 
     private void HandleCardClick(CardClick hit)
@@ -27,6 +29,7 @@ public class CamInteract : MonoBehaviour
             if (cardSelected == null)
             {
                 cardSelected = card;
+                PlayingAreaUI.SetActive(true);
             }
             else if (cardSelected == card)
             {
@@ -41,6 +44,7 @@ public class CamInteract : MonoBehaviour
                 }
                 gameTurn.RepositionAllCards();
                 cardSelected = null;
+                PlayingAreaUI.SetActive(false);
             }
         }
     }

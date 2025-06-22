@@ -6,8 +6,8 @@ public class CardMovement : MonoBehaviour
     public float speed = 10f;
     public Vector3 targetPosition = Vector3.positiveInfinity;
 
-    public float percentScreenUpY = 0.7f;
-    public float percentScreenCardPlayedX = 0.5f;
+    public float percentScreenUpY = 0.481f;
+    public float percentScreenCardPlayedX = 0.447f; // < 0.5f
     public float selectedOffset = 0.5f;
     void Start()
     {
@@ -59,17 +59,21 @@ public class CardMovement : MonoBehaviour
             return CardArea.None;
         }
 
-        Vector3 cardScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 cardScreenPosition = Camera.main.WorldToScreenPoint(targetPosition);
+
+        // Log percentages for debugging
+        Debug.Log($"Card Screen Position: ({cardScreenPosition.y / Screen.height}, {cardScreenPosition.x / Screen.width})");
 
         bool isInUpArea = cardScreenPosition.y > Screen.height * percentScreenUpY;
         bool isInPlayingArea = cardScreenPosition.x < Screen.width * percentScreenCardPlayedX;
+        bool isInDiscardArea = cardScreenPosition.x >= Screen.width * (1 - percentScreenCardPlayedX);
 
         if (isInUpArea && isInPlayingArea)
         {
             PlayingAreaShader();
             return CardArea.PlayingArea;
         }
-        else if (isInUpArea && !isInPlayingArea)
+        else if (isInUpArea && isInDiscardArea)
         {
             DiscardAreaShader();
             return CardArea.DiscardArea;

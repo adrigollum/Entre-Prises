@@ -43,12 +43,12 @@ public class PlayerInfo : MonoBehaviour
         inventory.PutCardInPool(card);
         return true;
     }
-    public void DiscardCard(GameObject card)
+    public int DiscardCard(GameObject card)
     {
         if (card == null)
         {
             Debug.LogError("Card is null. Cannot discard card.");
-            return;
+            return 0;
         }
 
         if (!inventory.PutCardInPool(card))
@@ -57,6 +57,8 @@ public class PlayerInfo : MonoBehaviour
         }
 
         AddWattction(1);
+
+        return 1;
     }
     public void AddWattction(int amount)
     {
