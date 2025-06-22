@@ -61,9 +61,6 @@ public class CardMovement : MonoBehaviour
 
         Vector3 cardScreenPosition = Camera.main.WorldToScreenPoint(targetPosition);
 
-        // Log percentages for debugging
-        Debug.Log($"Card Screen Position: ({cardScreenPosition.y / Screen.height}, {cardScreenPosition.x / Screen.width})");
-
         bool isInUpArea = cardScreenPosition.y > Screen.height * percentScreenUpY;
         bool isInPlayingArea = cardScreenPosition.x < Screen.width * percentScreenCardPlayedX;
         bool isInDiscardArea = cardScreenPosition.x >= Screen.width * (1 - percentScreenCardPlayedX);
