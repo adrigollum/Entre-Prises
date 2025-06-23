@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 public static class StaticPlayerInfo
 {
+    public static int lastLevel = -1;
     public static Dictionary<int, int> levelToExp = new Dictionary<int, int>
     {
         { 1, 50 },

@@ -7453,6 +7453,7 @@ GameObject:
   - component: {fileID: 519468500}
   - component: {fileID: 519468501}
   - component: {fileID: 519468502}
+  - component: {fileID: 519468503}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7625,6 +7626,20 @@ MonoBehaviour:
   minCardDistance: 1
   maxCardDistance: 2.1
   cardDistance: 10
+--- !u!114 &519468503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519468496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a9628ab3b2346549becb951411137a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelUpSound: {fileID: 8300000, guid: a99dc7b98b24b5548b13e5f88d6f853c, type: 3}
+  audioSource: {fileID: 193341420}
 --- !u!4 &523373030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6643578562499871609, guid: c0ccad8e2e86bd541a93074934f29533, type: 3}
@@ -7687,6 +7702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3745d25dc85798540a22d1f23d968b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ResetSceneName: Hacking
 --- !u!4 &541402719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6643578562499871609, guid: 0a79e43638f36e542b60045f3ccb7471, type: 3}
@@ -10731,6 +10747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &735309426
 GameObject:
   m_ObjectHideFlags: 0
@@ -10899,6 +10916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1001 &737523227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17439,6 +17457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &1229538081
 GameObject:
   m_ObjectHideFlags: 0
@@ -19475,6 +19494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1001 &1353440394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23155,6 +23175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1001 &1605594808
 PrefabInstance:
   m_ObjectHideFlags: 0
