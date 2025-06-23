@@ -8,6 +8,11 @@ public class GameTurn : MonoBehaviour
     private GameInfo gameInfo;
     public int turnCount = 0;
     public bool hadCardPlayed = false;
+    public AudioClip winClip;
+    public AudioClip loseClip;
+    public AudioSource sfxAudioSource;
+    public AudioSource musicAudioSource;
+    private float musicVolume;
 
     [Header("UI Elements")]
     public GameObject GameCanvas;
@@ -49,6 +54,7 @@ public class GameTurn : MonoBehaviour
         StaticGameActionLogs.DiscardColor = DiscardColor;
         StaticGameActionLogs.SkipTurnColor = SkipTurnColor;
         StaticGameActionLogs.EnemyAttackColor = EnemyAttackColor;
+        StaticGameActionLogs.ClearLogs();
 
         UpdateUI();
     }
@@ -77,6 +83,12 @@ public class GameTurn : MonoBehaviour
     {
         playerTurn.RepositionAllCards();
     }
+
+    private void ResetMusicVolume()
+    {
+        musicAudioSource.volume = musicVolume;
+    }
+
     public void TriggerEndOfGame()
     {
         EnumGameStatus gameStatus = gameInfo.GetGameStatus();
@@ -85,15 +97,21 @@ public class GameTurn : MonoBehaviour
             return;
         }
 
+        musicVolume = musicAudioSource.volume;
         if (gameStatus == EnumGameStatus.Lost)
         {
             EndOfGameText.text = "Vous avez perdu !";
+            sfxAudioSource.PlayOneShot(loseClip);
+            musicAudioSource.volume *= 0.5f;
         }
         else if (gameStatus == EnumGameStatus.Won)
         {
             EndOfGameText.text = "Vous avez gagné !";
             playerTurn.playerInfo.exp += enemyTurn.enemyInfo.GetExpReward();
+            sfxAudioSource.PlayOneShot(winClip);
+            musicAudioSource.volume *= 0.5f;
         }
+        Invoke("ResetMusicVolume", sfxAudioSource.clip.length);
 
         playerTurn.Save();
         enemyTurn.Save(gameStatus);

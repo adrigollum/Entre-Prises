@@ -21,14 +21,19 @@ public static class StaticGameActionLogs
 
     public static List<string> gameActionLogs = new List<string>();
     public const int MAX_LOGS = 6;
+
+    public static void ClearLogs()
+    {
+        gameActionLogs.Clear();
+    }
     public static void AddLog(string log)
     {
         if (gameActionLogs.Count >= MAX_LOGS)
         {
-            gameActionLogs.RemoveAt(0); // Remove the oldest log
+            gameActionLogs.RemoveAt(gameActionLogs.Count - 1);
         }
 
-        gameActionLogs.Add(log);
+        gameActionLogs.Insert(0, log);
     }
 
     private static string ColorToHex(Color color)
