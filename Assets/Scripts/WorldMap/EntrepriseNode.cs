@@ -27,6 +27,10 @@ public class EntrepriseNode : MonoBehaviour
 
     private Image imageBouton;
 
+    [SerializeField] private AudioClip ClicSound;
+
+    [SerializeField] private AudioSource SFX;
+
     void Awake()
     {
         imageBouton = GetComponent<Image>();
@@ -76,6 +80,7 @@ public class EntrepriseNode : MonoBehaviour
     {
         if (infoPanel != null)
         {
+            SFX.PlayOneShot(ClicSound);
             infoPanel.gameObject.SetActive(true); // Active le panel si désactivé
             infoPanel.Setup(nom, niveau, etat, weaknesses, resistances);
         }

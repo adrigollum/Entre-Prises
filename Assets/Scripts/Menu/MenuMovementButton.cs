@@ -6,6 +6,10 @@ public class MenuMovementButton : MonoBehaviour
     public MenuCamMovement cameraController;
     public int waypointIndex;
 
+    [SerializeField] private AudioClip ClicSound;
+
+    [SerializeField] private AudioSource SFX;
+
     void Start()
     {
         Button button = GetComponent<Button>();
@@ -17,6 +21,7 @@ public class MenuMovementButton : MonoBehaviour
 
         button.onClick.AddListener(() =>
         {
+            SFX.PlayOneShot(ClicSound);
             cameraController.GoToPoint(waypointIndex);
         });
     }

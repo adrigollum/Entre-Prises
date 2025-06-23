@@ -14,6 +14,11 @@ public class ForceFaiblesseItem : MonoBehaviour
     private int prix = 15; // Exemple, tu peux adapter par force/faiblesse
     private string entrepriseNom;
 
+    [SerializeField] private AudioSource SFX;
+
+    [SerializeField] private AudioClip refus;
+    [SerializeField] private AudioClip select;
+
     // Initialisation appelée par le panel avec le nom et si c'est force ou faiblesse
     public void Initialiser(string entrepriseNom, string nom, bool estForce)
     {
@@ -44,15 +49,20 @@ public class ForceFaiblesseItem : MonoBehaviour
             nomTMP.text = estForce ? "Force" : "Faiblesse";
             prixTMP.text = $"{prix}"; // ou tu peux laisser vide
             prixTMP.color = Color.red;
+            
         }
     }
 
     // Méthode pour simuler l'achat
     public void Acheter()
     {
+
+        SFX.PlayOneShot(estAchete? select : refus);
+        
         if (!estAchete && MenuMoney.AddMoney(-prix))
         {
             // Ici tu peux rajouter la logique de coût / ressources, etc.
+
             estAchete = true;
             MettreAJourAffichage();
             Debug.Log($"Tu as acheté : {nom}");

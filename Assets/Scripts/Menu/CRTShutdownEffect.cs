@@ -16,6 +16,8 @@ public class CRTShutdownEffect : MonoBehaviour
     private Text uiText;
     private TextMeshProUGUI tmpText;
 
+    [SerializeField] private AudioSource audioSource;
+
     public void Start()
     {
         button = GetComponent<Button>();
@@ -25,6 +27,8 @@ public class CRTShutdownEffect : MonoBehaviour
 
         button.onClick.AddListener(() =>
         {
+            audioSource.Play();
+
             if (targetRawImage == null) return;
 
             // 🔻 Masquer visuellement le bouton et le texte

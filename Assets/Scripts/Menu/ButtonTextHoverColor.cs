@@ -8,6 +8,8 @@ public class ButtonTextHoverColor : MonoBehaviour, IPointerEnterHandler, IPointe
     public Color normalColor = Color.white;
     public Color hoverColor = Color.red;
 
+    
+
     void Start()
     {
         if (buttonText == null)

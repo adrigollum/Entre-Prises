@@ -944,6 +944,7 @@ MonoBehaviour:
   objectsToDisable:
   - {fileID: 614695157}
   - {fileID: 326935994}
+  audioSource: {fileID: 1466949838}
 --- !u!1 &718630036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,10 +1234,10 @@ AudioSource:
   m_GameObject: {fileID: 1466949837}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1711179432839147810, guid: 7c6b8fe6f25942d4a9026d93642dcbe1, type: 2}
   m_audioClip: {fileID: 8300000, guid: 041a0dc3af598654a8e0675a4710e462, type: 3}
   m_Resource: {fileID: 8300000, guid: 041a0dc3af598654a8e0675a4710e462, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
