@@ -8,6 +8,8 @@ public class CamInteract : MonoBehaviour
     public GameObject cardSelected;
     public GameObject PlayingAreaUI;
 
+    public GameObject PlayingAreaUIDescription;
+
     public float minCardDistance = 1.5f;
     public float maxCardDistance = 3f;
     public float cardDistance = 2f;
@@ -29,7 +31,9 @@ public class CamInteract : MonoBehaviour
             if (cardSelected == null)
             {
                 cardSelected = card;
+                PlayingAreaUIDescription.GetComponent<TMPro.TextMeshProUGUI>().text = card.GetComponent<CardInfo>().cardDescription;
                 PlayingAreaUI.SetActive(true);
+                
             }
             else if (cardSelected == card)
             {
