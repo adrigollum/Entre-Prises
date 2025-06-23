@@ -11,7 +11,7 @@ public class ForceFaiblesseItem : MonoBehaviour
     public string nom;
     private bool estForce;
     private bool estAchete = false;
-    private int prix = 100; // Exemple, tu peux adapter par force/faiblesse
+    private int prix = 15; // Exemple, tu peux adapter par force/faiblesse
     private string entrepriseNom;
 
     // Initialisation appelée par le panel avec le nom et si c'est force ou faiblesse
