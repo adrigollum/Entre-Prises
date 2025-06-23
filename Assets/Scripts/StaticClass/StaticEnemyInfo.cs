@@ -80,7 +80,7 @@ public static class StaticEnemyInfo
     {
         if (!PlayerPrefs.HasKey($"{enemyName}EnemyWeaknesses") || !PlayerPrefs.HasKey($"{enemyName}EnemyResistances"))
         {
-            Debug.LogError($"Enemy '{enemyName}' not found in saved data.");
+            Debug.LogWarning($"Enemy '{enemyName}' not found in saved data.");
             return null;
         }
 

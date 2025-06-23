@@ -74,19 +74,23 @@ public class CamInteractMenu : MonoBehaviour
                 }
                 Debug.DrawLine(ray.origin, hit.point, Color.red);
 
-                CardClick cardClick = hit.collider.GetComponent<CardClick>();
-                if (cardClick != null)
+                CardClick[] cardClick = hit.collider.GetComponents<CardClick>();
+                if (cardClick != null && cardClick.Length > 0)
                 {
-                    HandleCardClick(cardClick);
+                    HandleCardClick(cardClick[0]);
                 }
                 else if (cardSelected == null)
                 {
-                    IClickable clickable = hit.collider.GetComponent<IClickable>();
+                    IClickable[] clickable = hit.collider.GetComponents<IClickable>();
+                    Debug.Log("Clickable components found: " + clickable.Length);
                     if (clickable != null)
                     {
-                        if (Mouse.current.leftButton.wasPressedThisFrame)
+                        foreach (IClickable clickableItem in clickable)
                         {
-                            clickable.onClick(gameObject, hit.point, mousePosition, IClickable.ClickType.LeftClick, Mouse.current.leftButton.isPressed);
+                            if (Mouse.current.leftButton.wasPressedThisFrame)
+                            {
+                                clickableItem.onClick(gameObject, hit.point, mousePosition, IClickable.ClickType.LeftClick, Mouse.current.leftButton.isPressed);
+                            }
                         }
                     }
                 }

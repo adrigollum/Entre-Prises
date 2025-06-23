@@ -9,6 +9,7 @@ public class GameInfo : MonoBehaviour
     public Slider healthBar;
     public TextMeshProUGUI playerStatsText;
     public TextMeshProUGUI enemyStatsText;
+    public bool hasEnded = false;
     public void Init()
     {
         EnemyInfo enemyInfo = GetComponent<EnemyInfo>();
@@ -39,6 +40,11 @@ public class GameInfo : MonoBehaviour
 
     public EnumGameStatus GetGameStatus()
     {
+        if (hasEnded)
+        {
+            return EnumGameStatus.None;
+        }
+
         if (health <= 0)
         {
             return EnumGameStatus.Lost;

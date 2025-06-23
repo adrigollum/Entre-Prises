@@ -61,9 +61,9 @@ public class GameTurn : MonoBehaviour
 
     public bool PlayCard(GameObject card)
     {
-        if (card == null)
+        if (card == null || gameInfo.GetGameStatus() != EnumGameStatus.Playing)
         {
-            Debug.LogError("Card is null. Cannot play card.");
+            Debug.LogWarning("Card is null or game is not in playing status. Cannot play card.");
             return false;
         }
 
@@ -92,7 +92,7 @@ public class GameTurn : MonoBehaviour
     public void TriggerEndOfGame()
     {
         EnumGameStatus gameStatus = gameInfo.GetGameStatus();
-        if (gameStatus == EnumGameStatus.Playing)
+        if (gameStatus == EnumGameStatus.Playing || gameStatus == EnumGameStatus.None)
         {
             return;
         }
@@ -118,13 +118,14 @@ public class GameTurn : MonoBehaviour
 
         EndOfGameCanvas.SetActive(true);
         GameCanvas.SetActive(false);
+        gameInfo.hasEnded = true;
     }
 
     public void DiscardCard(GameObject card)
     {
-        if (card == null)
+        if (card == null || gameInfo.GetGameStatus() != EnumGameStatus.Playing)
         {
-            Debug.LogError("Card is null. Cannot discard card.");
+            Debug.LogWarning("Card is null or game is not in playing status. Cannot discard card.");
             return;
         }
 
@@ -144,6 +145,12 @@ public class GameTurn : MonoBehaviour
     }
     public void EndTurn(bool isSkip = false)
     {
+        if (gameInfo.GetGameStatus() != EnumGameStatus.Playing)
+        {
+            Debug.LogWarning("Cannot end turn, game is not in playing status.");
+            return;
+        }
+
         turnCount++;
 
         if (turnCount % enemyTurn.enemyInfo.turnToAttack == 0)

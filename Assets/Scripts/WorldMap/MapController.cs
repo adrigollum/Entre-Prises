@@ -29,7 +29,7 @@ public class MapController : MonoBehaviour
     public static Color colorNear = Color.red;
     public static Color colorLost = Color.black;
 
-    void Start()
+    void Awake()
     {
         // Assigne les couleurs des états à partir des variables statiques
         colorNeutral = colorInInspectorNeutral;

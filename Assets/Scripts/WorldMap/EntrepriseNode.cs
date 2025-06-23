@@ -31,7 +31,7 @@ public class EntrepriseNode : MonoBehaviour
 
     [SerializeField] private AudioSource SFX;
 
-    void Awake()
+    void Start()
     {
         imageBouton = GetComponent<Image>();
         etat = EnumGameStatusToEnterPriseState(
