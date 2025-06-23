@@ -8,10 +8,10 @@ public class BouncingUIButton : MonoBehaviour
 
     private RectTransform rectTransform;
     private RectTransform parentRect;
-    private Vector3 direction;
+    public Vector3 direction;
     private Vector2 size;
 
-    private static List<BouncingUIButton> allButtons = new List<BouncingUIButton>();
+    public static List<BouncingUIButton> allButtons = new List<BouncingUIButton>();
 
     void Start()
     {
@@ -89,10 +89,7 @@ public class BouncingUIButton : MonoBehaviour
                 rectTransform.localPosition += (Vector3)push;
                 other.rectTransform.localPosition -= (Vector3)push;
 
-                // Échange partiel de direction (simule une élastique)
-                Vector3 tempDir = direction;
-                direction = (direction + other.direction * 0.2f).normalized;
-                other.direction = (other.direction + tempDir * 0.2f).normalized;
+                direction = new Vector3(-other.direction.y, other.direction.x, 0f);
             }
         }
     }

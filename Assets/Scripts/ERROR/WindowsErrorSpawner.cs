@@ -1,11 +1,12 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class WindowsErrorSpawner : MonoBehaviour
 {
     [Header("Fenêtres à faire pop")]
     [SerializeField] private GameObject[] windowPrefabs; // Liste de prefabs (variantes de fenêtres)
-    
+
     [Header("Zone de spawn (Canvas World Space)")]
     [SerializeField] private RectTransform spawnArea; // Le RectTransform du World Space Canvas
 
