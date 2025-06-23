@@ -4,8 +4,8 @@ using UnityEngine;
 
 public static class StaticDeckSave
 {
-    private const string DEFAULT_DECK = "Boite de Chocowat:5|Cable News:5|Dipoleboire:10|Espresso:5|Louis Bobine:5|Piezo Quatre Fromage:5|Ristretto:5";
-    private const string DEFAULT_NOT_DECK = "Album de Joule:4|Boite de Chocowat:5|Cable News:1|Café Noir:3|Circuit Court et Vice et Versa:3|Cohmerage:2|Corrupt'Ion:2|Dipoleboire:1|Dithirampere:2|Doppio:4|Espresso:1|Fusible de Chasse:3|Graissage de Pwhatt:3|Invitation au jeux Ohmlympique:2|Le Loup de VoltStreet:4|Louis Bobine:5|Lungo:2|Piezo Quatre Fromage:1|Pot de Kelvin:5|Prime Electrique:4|Ristretto:5|Supraconductivichy:2";
+    private const string DEFAULT_DECK = "Boite de Chocowat:10|Dipoleboire:10|Louis Bobine:10|Ristretto:10";
+    private const string DEFAULT_NOT_DECK = "Album de Joule:4|Cable News:6|Café Noir:3|Circuit Court et Vice et Versa:3|Cohmerage:2|Corrupt'Ion:2|Dipoleboire:1|Dithirampere:2|Doppio:4|Espresso:6|Fusible de Chasse:3|Graissage de Pwhatt:3|Invitation au jeux Ohmlympique:2|Le Loup de VoltStreet:4|Lungo:2|Piezo Quatre Fromage:6|Pot de Kelvin:5|Prime Electrique:4|Supraconductivichy:2";
 
     public enum DeckType
     {
