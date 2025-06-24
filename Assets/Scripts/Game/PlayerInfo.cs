@@ -11,6 +11,8 @@ public class PlayerInfo : MonoBehaviour
     public Inventory inventory;
     public TextMeshProUGUI wattctionText;
 
+    public CardSoundManager soundManager;
+
     public void Init()
     {
         exp = PlayerPrefs.GetInt("PlayerExp", 0);
@@ -39,6 +41,9 @@ public class PlayerInfo : MonoBehaviour
         }
 
         AddWattction(-cardInfo.cardWattctionCost);
+
+        if (soundManager != null)
+        soundManager.PlaySoundForType(cardInfo.cardFirstType);
 
         inventory.PutCardInPool(card);
         return true;

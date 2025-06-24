@@ -13,6 +13,13 @@ public class EnemyInfo : MonoBehaviour
     public List<EnumCardType.CardType> resistances = new List<EnumCardType.CardType>();
     public TextMeshProUGUI enemyNameText;
     public TextMeshProUGUI EOGEnemyNameText;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip attackNormalClip;
+    [SerializeField] private AudioClip attackStrongClip;
+    [SerializeField] private AudioClip damageTakenClip;
+
     public void Init()
     {
         level = StaticEnemyInfo.level;
@@ -69,6 +76,7 @@ public class EnemyInfo : MonoBehaviour
 
         return damage * mult;
     }
+
     public int GetDamageFromCard(CardInfo cardInfo)
     {
         if (cardInfo == null)
@@ -78,6 +86,12 @@ public class EnemyInfo : MonoBehaviour
 
         int damage = CalcDamage(cardInfo.cardStat, cardInfo.cardFirstType);
         damage += CalcDamage(cardInfo.cardStat, cardInfo.cardSecondType);
+
+        // Jouer le son de prise de dégâts si on a fait des dégâts (damage > 0)
+        if (damage > 0 && damageTakenClip != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(damageTakenClip);
+        }
 
         return damage;
     }
@@ -101,8 +115,16 @@ public class EnemyInfo : MonoBehaviour
         int randomValue = UnityEngine.Random.Range(0, 100);
         if (randomValue < 20)
         {
+            // Jouer son attaque forte
+            if (attackStrongClip != null && audioSource != null)
+                audioSource.PlayOneShot(attackStrongClip);
+
             return strongDamage;
         }
+
+        // Jouer son attaque normale
+        if (attackNormalClip != null && audioSource != null)
+            audioSource.PlayOneShot(attackNormalClip);
 
         return normalDamage;
     }

@@ -9,6 +9,11 @@ public class Inventory : MonoBehaviour
     public List<GameObject> allCardDeck = new List<GameObject>();
 
     public float deckWidth = 1.6f;
+
+    [SerializeField] private AudioClip[] clips;
+
+    [SerializeField] private AudioSource SFX;
+
     public void Init()
     {
         Random.InitState(System.DateTime.Now.Millisecond);
@@ -80,6 +85,8 @@ public class Inventory : MonoBehaviour
         {
             if (card != null && card.GetComponent<CardInfo>() != null)
             {
+                
+                
                 CardInfo cardInfo = card.GetComponent<CardInfo>();
                 for (int i = 0; i < cardInfo.MaxCardInDeck; i++)
                 {
@@ -87,6 +94,9 @@ public class Inventory : MonoBehaviour
                     {
                         return card;
                     }
+                    AudioClip randomClip = clips[Random.Range(0, clips.Length)];
+                SFX.clip = randomClip;
+                SFX.Play();
                     currentIndex++;
                 }
             }
@@ -111,7 +121,9 @@ public class Inventory : MonoBehaviour
         }
 
         randomCard.GetComponent<CardInfo>().MaxCardInDeck--;
-
+        AudioClip randomClip = clips[Random.Range(0, clips.Length)];
+        SFX.clip = randomClip;
+        SFX.Play();
         return AddCardFromPrefab(randomCard, summoningPosition); ;
     }
 

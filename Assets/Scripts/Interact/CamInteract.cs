@@ -14,6 +14,10 @@ public class CamInteract : MonoBehaviour
     public float maxCardDistance = 3f;
     public float cardDistance = 2f;
 
+    [SerializeField] private AudioClip ClicSound;
+
+    [SerializeField] private AudioSource SFX;
+
     void Start()
     {
         mainCamera = GetComponent<Camera>();
@@ -33,6 +37,7 @@ public class CamInteract : MonoBehaviour
                 cardSelected = card;
                 PlayingAreaUIDescription.GetComponent<TMPro.TextMeshProUGUI>().text = card.GetComponent<CardInfo>().cardDescription;
                 PlayingAreaUI.SetActive(true);
+                SFX.PlayOneShot(ClicSound);
 
             }
             else if (cardSelected == card)
@@ -49,6 +54,7 @@ public class CamInteract : MonoBehaviour
                 gameTurn.RepositionAllCards();
                 cardSelected = null;
                 PlayingAreaUI.SetActive(false);
+                SFX.PlayOneShot(ClicSound);
             }
         }
     }

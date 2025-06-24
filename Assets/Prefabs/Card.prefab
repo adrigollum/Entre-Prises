@@ -1379,6 +1379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3838b94725813114eb39edc9af4eb287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clips: {fileID: 8300000, guid: 94c53e3b83762db4c8aa708e062b34f8, type: 3}
+  audioSourceNameInScene: WinLoseSound
 --- !u!114 &311818306308901396
 MonoBehaviour:
   m_ObjectHideFlags: 0

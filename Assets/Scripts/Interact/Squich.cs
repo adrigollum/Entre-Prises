@@ -8,6 +8,10 @@ public class Squich : MonoBehaviour, IClickable
     private Vector3 originalScale;
     private bool isSquishing = false;
 
+    [SerializeField] private AudioClip ClicSound;
+
+    [SerializeField] private AudioSource SFX;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,6 +20,7 @@ public class Squich : MonoBehaviour, IClickable
 
     public void onClick(GameObject camera, Vector3 worldPosition, Vector2 position, IClickable.ClickType button, bool isDown = true)
     {
+        SFX.PlayOneShot(ClicSound);
         Squish();
     }
 
